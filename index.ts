@@ -1,8 +1,6 @@
 import { Application } from "express";
-import { PrismaClient } from "@prisma/client";
 const express = require("express");
-const router = require("./ctrlrs/auth/auth_controller")
-const prisma = new PrismaClient()
+const authrouter = require("./ctrlrs/auth/auth_controller")
 const app: Application = express()
 const PORT: number = 4000
 
@@ -12,7 +10,7 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use("auth", router)
+app.use("/auth", authrouter)
 app.get("/", (req, res) => {
     res.status(200).json({"msg": "hello world"})
     

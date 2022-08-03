@@ -10,23 +10,23 @@ const login  = async (req: any, res: any,  done: CallableFunction) => {
             where: {
               email: creds.email,
             },
-          }, (err: any, user: any) => {
-                if(err) return done(err);
-                if (!user) {
-                    return done(null, false, {message: "Incorrect email or password"})   
-                }
-                bcrypt.compare(creds.password, user.password, (err: any, res: any) => {
-                    if (res) {
-                      // passwords match! log user in
-                      return done(null, user)
-                    } else {
-                      // passwords do not match!
-                      return done(null, false, { message: "Incorrect email or password" })
-                    }
-                  })
-                return done(null, user)
-            })
-        }
-    
+          })
+              
+           if (!user) {
+               return done(null, false, {message: "Incorrect email or password"})   
+           }
+           bcrypt.compare(creds.password, user.password, (err: any, res: any) => {
+               if (res) {
+                 // passwords match! log user in
+                 return done(null, user)
+               } else {
+                 // passwords do not match!
+                 return done(null, false, { message: "Incorrect email or password" })
+               }
+             })
+           return done(null, user)
+            }
   
+  
+        
   module.exports = login
