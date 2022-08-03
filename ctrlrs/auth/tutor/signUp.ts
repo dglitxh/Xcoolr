@@ -19,5 +19,7 @@ const signUp = async (req: any, res: any): Promise<void>  => {
         }
     })
 
-    res.redirect("/profile")
+    res.redirect("/profile");
 }
+
+module.exports = signUp
