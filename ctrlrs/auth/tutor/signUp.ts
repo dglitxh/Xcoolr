@@ -20,8 +20,8 @@ const signUp = async (req: any, res: any): Promise<void>  => {
                 password: creds.password
             }
         })
-
-        res.redirect("/profile");
+        res.send("new account created")
+        res.redirect("/");
     }
     catch(e) {
         console.log(e)
