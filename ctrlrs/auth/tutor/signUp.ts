@@ -25,7 +25,7 @@ const signUp = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.sendStatus(403, "there was an error authenticating user")
+        res.send({"status": "there was an error authenticating user"})
     }
     finally{
         prisma.$disconnect()
