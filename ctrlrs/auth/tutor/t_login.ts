@@ -5,8 +5,10 @@ const prisma = new PrismaClient()
 const bcrypt = require("bcryptjs")
 
 const login  = async (req: any, res: any) => {
+  console.log("i'm tryna login")
         try{
           const creds: log_in = req.body
+          console.log("creds")
           const user = await prisma.teacher.findUnique({
               where: {
                 email: creds.email,
@@ -15,21 +17,21 @@ const login  = async (req: any, res: any) => {
            if (!user) {
                res.send({"message": "Incorrect email or password"})   
            }
+           console.log("user?")
            if (user)
            bcrypt.compare(creds.password, user.password, (err: any, response: any) => {
                if (!response) {
                  // passwords do not match!
-                 console.log("res: ", response)
-                 console.log(err)
-                 res.send({ "message": "Incorrect email or password" })
-                 return
+                 res.status(401).send({ "message": "Incorrect email or password" })
+             
                }
-               else {
+
+                console.log("i am a user!")
                 const sess = req.session
-                sess.email = req.body.email
+                sess.email = creds.email
                 sess.token = "0958jwfkoa"
+
                 res.send("status: user authenticated succesfully")
-               }
              });
 
           }
@@ -40,7 +42,5 @@ const login  = async (req: any, res: any) => {
             prisma.$disconnect()
           }
     }
-  
-  
-        
+      
   module.exports = login
