@@ -23,7 +23,7 @@ const login  = async (req: any, res: any) => {
                if (!response) {
                  // passwords do not match!
                  res.status(401).send({ "message": "Incorrect email or password" })
-             
+                 return
                }
 
                 console.log("i am a user!")
@@ -31,7 +31,7 @@ const login  = async (req: any, res: any) => {
                 sess.email = creds.email
                 sess.token = "0958jwfkoa"
 
-                res.send("status: user authenticated succesfully")
+                res.send({"status": "user authenticated succesfully"})
              });
 
           }
