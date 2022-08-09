@@ -13,7 +13,7 @@ const redisStore = require('connect-redis')(session);
 router.use(cookieParser())
 router.use(session({
      name: "xcoolr",
-     secret: "67ygghiuohghhhtgttyt", //remember to change this
+     secret: process.env.SESSION_SECRET, //remember to change this
      resave: false, 
      saveUninitialized: false,
      store: new redisStore({client: redisClient, ttl: 86400 }),
@@ -21,7 +21,7 @@ router.use(session({
 
 router.post("/tutor/signup", t_signUp)
 router.post("/tutor/login", t_login)
-router.get("/logut", (req: any, res: any) => {
+router.get("/logout", (req: any, res: any) => {
     req.session.destroy()
     res.send({"status": "user logged out succesfully"})
 })
