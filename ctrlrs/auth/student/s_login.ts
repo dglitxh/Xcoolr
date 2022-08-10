@@ -4,11 +4,11 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 const bcrypt = require("bcryptjs")
 
-const t_login  = async (req: any, res: any) => {
+const s_login  = async (req: any, res: any) => {
         try{
           const creds: log_in = req.body
           console.log("creds")
-          const user = await prisma.teacher.findUnique({
+          const user = await prisma.student.findUnique({
               where: {
                 email: creds.email,
               },
@@ -16,6 +16,7 @@ const t_login  = async (req: any, res: any) => {
            if (!user) {
                res.send({"message": "Incorrect email or password"})   
            }
+           console.log("user?")
            if (user)
            bcrypt.compare(creds.password, user.password, (err: any, response: any) => {
                if (!response) {
@@ -41,4 +42,4 @@ const t_login  = async (req: any, res: any) => {
           }
     }
       
-  module.exports = t_login
+  module.exports = s_login

@@ -55,6 +55,7 @@ model StudentProfile {
   studentId  Int          @unique
   testScores TestScores[]
   exScores   ExScores[]
+  subjects   Subject[]
 }
 
 model Admin {
@@ -74,6 +75,8 @@ model Subject {
   core        Boolean        @default(true)
   t_profile   TeacherProfile @relation(fields: [t_profileId], references: [id])
   t_profileId Int
+  s_profile   StudentProfile @relation(fields: [s_profileId], references: [id])
+  s_profileId Int
   Exercise    Exercise[]
   Test        Test[]
 }
