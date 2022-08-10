@@ -4,8 +4,7 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 const bcrypt = require("bcryptjs")
 
-const login  = async (req: any, res: any) => {
-  console.log("i'm tryna login")
+const t_login  = async (req: any, res: any) => {
         try{
           const creds: log_in = req.body
           console.log("creds")
@@ -17,7 +16,6 @@ const login  = async (req: any, res: any) => {
            if (!user) {
                res.send({"message": "Incorrect email or password"})   
            }
-           console.log("user?")
            if (user)
            bcrypt.compare(creds.password, user.password, (err: any, response: any) => {
                if (!response) {
@@ -43,4 +41,4 @@ const login  = async (req: any, res: any) => {
           }
     }
       
-  module.exports = login
+  module.exports = t_login
