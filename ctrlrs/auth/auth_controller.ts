@@ -8,6 +8,8 @@ const session = require("express-session")
 const router = Router()
 const t_login = require("./tutor/t_login")
 const t_signUp = require("./tutor/signUp")
+const s_login = require("./student/s_login")
+const s_signup = require("./student/s_signup")
 const redisStore = require('connect-redis')(session);
 
 router.use(cookieParser())
@@ -21,6 +23,8 @@ router.use(session({
 
 router.post("/tutor/signup", t_signUp)
 router.post("/tutor/login", t_login)
+router.post("/student/login", s_login)
+router.post("/student/signup", s_signup)
 router.get("/logout", (req: any, res: any) => {
     req.session.destroy()
     res.send({"status": "user logged out succesfully"})
