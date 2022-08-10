@@ -11,10 +11,13 @@ module.exports; interface log_in {
 
 module.exports; interface t_profile {
     id       :number
-    bio      :string
-    teacher  :object   
+    bio      :string 
     teacherId:number       
-    subjects :object[]
     rating   :number
-    Ratings  :object[]
+}
+
+module.exports; interface s_profile {
+    id       :number
+    bio      :string  
+    studentId:number       
 }
