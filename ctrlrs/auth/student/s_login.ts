@@ -27,6 +27,7 @@ const s_login  = async (req: any, res: any) => {
 
                 console.log("i am a user!")
                 const sess = req.session
+                sess.user = user.id
                 sess.email = creds.email
                 sess.token = "0958jwfkoa"
 
