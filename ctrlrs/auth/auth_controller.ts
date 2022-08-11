@@ -27,9 +27,9 @@ router.use(session({
 
 router.post("/tutor/signup", t_signUp)
 router.post("/tutor/login", t_login)
-router.post("/tutor/profile/create", t_newProfile)
-router.post("/tutor/profile/update", t_updProfile)
-router.post("/tutor/profile/delete", t_delProfile)
+router.post("/tutor/:id/profile/create", t_newProfile)
+router.put("/tutor/:id/profile/update", t_updProfile)
+router.get("/tutor/:id/profile/delete", t_delProfile)
 router.get("/tutor/:id/profile", t_getProfile)
 router.post("/student/login", s_login)
 router.post("/student/signup", s_signup)
