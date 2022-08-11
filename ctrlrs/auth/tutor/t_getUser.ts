@@ -15,7 +15,7 @@ const t_getUser  = async (req: any, res: any) => {
                res.send({"message": "user not found"})   
            }
 
-                res.send(user)
+                res.send({"result": user})
              }
           catch(e) {
             res.sendStatus(500)
