@@ -20,6 +20,14 @@ const signUp = async (req: any, res: any): Promise<void>  => {
                 password: creds.password
             }
         })
+
+
+        console.log("i am a user!")
+        const sess = req.session
+        sess.email = creds.email
+        sess.user = newTeacher.id
+        sess.token = "0958jwfkoa"
+
         res.send("new account created")
         res.redirect("/");
     }
