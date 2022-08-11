@@ -19,7 +19,10 @@ const updateProfile = async (req: any, res: any): Promise<void>  => {
         })
         if (profile)
         profile = creds
-        res.send({"message": "profile updated succesfully"})
+        res.send({
+            "message": "profile updated succesfully",
+            "result": profile
+        })
     }
     catch(e) {
         console.log(e)

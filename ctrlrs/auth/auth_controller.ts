@@ -8,6 +8,10 @@ const session = require("express-session")
 const router = Router()
 const t_login = require("./tutor/t_login")
 const t_signUp = require("./tutor/signUp")
+const t_newProfile = require("./tutor/createProfile")
+const t_updProfile = require("./tutor/editProfile")
+const t_delProfile = require("./tutor/delProfile")
+const t_getProfile = require("./tutor/t_getUser")
 const s_login = require("./student/s_login")
 const s_signup = require("./student/s_signup")
 const redisStore = require('connect-redis')(session);
@@ -23,6 +27,10 @@ router.use(session({
 
 router.post("/tutor/signup", t_signUp)
 router.post("/tutor/login", t_login)
+router.post("/tutor/:id/profile/create", t_newProfile)
+router.put("/tutor/:id/profile/update", t_updProfile)
+router.get("/tutor/:id/profile/delete", t_delProfile)
+router.get("/tutor/:id/profile", t_getProfile)
 router.post("/student/login", s_login)
 router.post("/student/signup", s_signup)
 router.get("/logout", (req: any, res: any) => {

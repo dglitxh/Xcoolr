@@ -17,7 +17,10 @@ const createProfile = async (req: any, res: any): Promise<void>  => {
             }
         })
 
-        res.send({"message": "profile created succesfully"})
+        res.send({
+            "message": "profile created succesfully",
+            "result": profile
+        })
     }
     catch(e) {
         console.log(e)
