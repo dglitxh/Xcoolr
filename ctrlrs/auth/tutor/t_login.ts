@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs")
 const t_login  = async (req: any, res: any) => {
         try{
           const creds: log_in = req.body
-          console.log("creds")
+          console.log(creds)
           const user = await prisma.teacher.findUnique({
               where: {
                 email: creds.email,
@@ -27,7 +27,7 @@ const t_login  = async (req: any, res: any) => {
                 console.log("i am a user!")
                 const sess = req.session
                 sess.email = creds.email
-                sess.token = "0958jwfkoa"
+              
 
                 res.send({"status": "user authenticated succesfully"})
              });

@@ -22,7 +22,7 @@ router.use(session({
      secret: process.env.SESSION_SECRET, //remember to change this
      resave: false, 
      saveUninitialized: false,
-     store: new redisStore({client: redisClient, ttl: 86400 }),
+     store: new redisStore({client: redisClient}),
 }))
 
 router.post("/tutor/signup", t_signUp)
