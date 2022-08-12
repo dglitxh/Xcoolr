@@ -10,6 +10,7 @@ import bodyParser from "body-parser";
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.raw())
+app.use(bodyParser.text())
 
 app.use((req, res, next) => {
     console.log("method", req.method)
