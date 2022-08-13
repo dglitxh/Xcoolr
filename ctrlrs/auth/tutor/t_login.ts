@@ -25,7 +25,7 @@ const t_login  = async (req: any, res: any) => {
                }
 
                 console.log("i am a user!")
-                const sess = req.session
+                const sess = req.session;
                 sess.email = creds.email
               
 
