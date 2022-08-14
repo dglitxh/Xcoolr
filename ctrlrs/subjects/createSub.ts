@@ -15,15 +15,15 @@ const createSub = async (req: any, res: any): Promise<void>  => {
         const body: sub = req.body
         
         const newSub = await prisma.subject.create({
-            body: {
+            data: {
                 title: body.title,
+                core: body.core,
                 description: body.description,
-                core: body.core
             }
         })
 
         res.send("new subject created")
-        res.redirect("/");
+    
     }
     catch(e) {
         console.log(e)
