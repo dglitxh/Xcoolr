@@ -1,4 +1,4 @@
-import "../interfaces"
+import "./interfaces"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
@@ -8,7 +8,7 @@ const t_login  = async (req: any, res: any) => {
         try{
           const creds: log_in = req.body
           console.log(creds)
-          const user = await prisma.teacher.findUnique({
+          const user = await prisma.user.findUnique({
               where: {
                 email: creds.email,
               },

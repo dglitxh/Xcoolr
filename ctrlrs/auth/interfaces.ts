@@ -21,3 +21,8 @@ module.exports; interface s_profile {
     bio      :string  
     studentId:number       
 }
+
+enum role {
+    Teacher,
+    Student
+}
