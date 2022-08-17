@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import "./interfaces"
+import "../interfaces"
 
 const bcrypt = require("bcryptjs")
 const prisma = new PrismaClient()
@@ -13,7 +13,7 @@ const signUp = async (req: any, res: any): Promise<void>  => {
         console.log("data: ", creds)
         creds.password = await bcrypt.hash(creds.password, salt,)
 
-        const newTeacher = await prisma.teacher.create({
+        const newTeacher = await prisma.student.create({
             data: {
                 email: creds.email,
                 name: creds.name,
@@ -24,11 +24,11 @@ const signUp = async (req: any, res: any): Promise<void>  => {
 
         console.log("i am a user!")
         const sess = req.session
-        sess.email = creds.email
         sess.user = newTeacher.id
+        sess.email = creds.email
         sess.token = "0958jwfkoa"
 
-        res.send("new account created")
+        res.send("new student account created")
         res.redirect("/");
     }
     catch(e) {
