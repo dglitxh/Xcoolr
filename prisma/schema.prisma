@@ -55,7 +55,7 @@ model StudentProfile {
   studentId  Int          @unique
   testScores TestScores[]
   exScores   ExScores[]
-  subjects   Subject[]
+  subjects   StudentSubjects[]
 }
 
 model Admin {
@@ -75,10 +75,19 @@ model Subject {
   core        Boolean        @default(true)
   t_profile   TeacherProfile @relation(fields: [t_profileId], references: [id])
   t_profileId Int
-  s_profile   StudentProfile @relation(fields: [s_profileId], references: [id])
-  s_profileId Int[]
+  s_profiles  StudentSubjects[]
   Exercise    Exercise[]
   Test        Test[]
+}
+
+model StudentSubjects {
+  s_profile   StudentProfile @relation(fields: [s_profileId], references: [id])
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  subjectId   Int 
+  s_profileId Int
+  @@id([subjectId, s_profileId])
+  assignedAt DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
 }
 
 model Exercise {
