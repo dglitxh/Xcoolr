@@ -8,22 +8,19 @@ interface sub  {
     description: string
     core: boolean
     t_profileId: number
-    s_profileId: number
 }
 
 const createSub = async (req: any, res: any): Promise<void>  => {
     try {
-    
+    // only teachers can create new subjects
         const body: sub = req.body
-        const t: number = req.params.t_profileId
-        const s: number = req.params.s_profileId
+        const tid: number = req.params.id
         const newSub = await prisma.subject.create({
             data: {
                 title: body.title,
                 core: body.core,
                 description: body.description,
-                t_profileId: t,
-                s_profileId: s,
+                t_profileId: tid,
             }
         })
 
