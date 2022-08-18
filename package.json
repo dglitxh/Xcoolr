@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.ts"
+    "test": "jest",
+    "start": "nodemon server.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,9 +24,11 @@
     "redis": "^4.2.0"
   },
   "devDependencies": {
+    "@types/jest": "^28.1.7",
     "@types/passport": "^1.0.9",
     "nodemon": "^2.0.19",
     "prisma": "^4.1.1",
+    "supertest": "^6.2.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   }
