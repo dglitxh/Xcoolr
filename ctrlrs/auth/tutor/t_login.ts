@@ -1,4 +1,4 @@
-import "./interfaces"
+import "../interfaces"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
