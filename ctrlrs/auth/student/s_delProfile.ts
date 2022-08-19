@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 const s_delUser  = async (req: any, res: any) => {
         try{
-          const {id} = req.params.id
+          const id = Number(req.params.id)
           const user = await prisma.studentProfile.delete({
               where: {
                 studentId: id
@@ -15,7 +15,7 @@ const s_delUser  = async (req: any, res: any) => {
                 res.send("Student profile deleted succesfully.")
              }
           catch(e) {
-            res.sendStatus(500)
+            res.status(403).send("Profile could not be deleted due to an error")
           }
           finally{
             prisma.$disconnect()

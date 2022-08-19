@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 const t_getUser  = async (req: any, res: any) => {
         try{
-          const {id} = req.params.id
+          const id: number = Number(req.params.id)
           const user = await prisma.teacherProfile.findUnique({
               where: {
                 teacherId: id
@@ -18,7 +18,7 @@ const t_getUser  = async (req: any, res: any) => {
                 res.send({"result": user})
              }
           catch(e) {
-            res.sendStatus(500)
+            res.status(403).send("There was a problem finding user profile")
           }
           finally{
             prisma.$disconnect()

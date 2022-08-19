@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 
 const updateProfile = async (req: any, res: any): Promise<void>  => {
     try {
-        const user_id: number = req.params.id
+        const user_id: number = Number(req.params.id)
         const creds: t_profile = req.body
         let profile = await prisma.teacherProfile.update({
             where: {

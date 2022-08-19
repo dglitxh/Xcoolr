@@ -2,7 +2,6 @@ import { Application } from "express";
 const express = require("express");
 const authrouter = require("./ctrlrs/auth/auth_controller")
 const app: Application = express()
-const PORT: number = 4000
 import bodyParser from "body-parser";
 
 
@@ -24,6 +23,5 @@ app.get("/", (req, res) => {
     
 })
 
-app.listen(PORT, () => {
-    console.log(` Server listening on port ${PORT}...`)
-})
+
+module.exports = app

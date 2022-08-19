@@ -1,4 +1,4 @@
-import "./interfaces"
+import "../interfaces"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
@@ -34,7 +34,7 @@ const t_login  = async (req: any, res: any) => {
 
           }
           catch(e) {
-            res.sendStatus(500)
+            res.status(400).send("There was an authentication error")
           }
           finally{
             prisma.$disconnect()
