@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 const t_delUser  = async (req: any, res: any) => {
         try{
-          const {id} = req.params.id
+          const id: number = Number(req.params.id)
           const user = await prisma.teacherProfile.delete({
               where: {
                 teacherId: id
