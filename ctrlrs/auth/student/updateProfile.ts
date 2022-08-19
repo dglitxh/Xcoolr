@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 
 const updateProfile = async (req: any, res: any): Promise<void>  => {
     try {
-        const user_id: number = req.params.id
+        const user_id: number = Number(req.params.id)
         const creds: s_profile = req.body
         let profile = await prisma.studentProfile.update({
             where: {
@@ -22,7 +22,7 @@ const updateProfile = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.sendStatus(403, "there was an error updating profile")
+        res.status(403).send("Profile update failed due to an error")
     }
     finally{
         prisma.$disconnect()

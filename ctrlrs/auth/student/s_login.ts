@@ -34,7 +34,7 @@ const s_login  = async (req: any, res: any) => {
 
           }
           catch(e) {
-            res.sendStatus(500)
+            res.status(403).send("Sorry there was and authentication error")
           }
           finally{
             prisma.$disconnect()

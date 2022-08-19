@@ -8,7 +8,7 @@ const createProfile = async (req: any, res: any): Promise<void>  => {
     try {
         const user_id: number = req.params.id
         const creds: s_profile = req.body
-        creds.studentId = user_id
+        creds.studentId = Number(user_id)
         const profile = await prisma.studentProfile.create({
             data: {
                 bio: creds.bio,
@@ -21,7 +21,7 @@ const createProfile = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.sendStatus(403, "there was an error authenticating user")
+        res.status(403).send("User profile could not be created")
     }
     finally{
         prisma.$disconnect()
