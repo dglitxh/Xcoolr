@@ -15,8 +15,21 @@ const s_signup = require("../ctrlrs/auth/student/s_signup")
 
 
 
-describe("Tests student auth", () => {
+describe("Tests user auth", () => {
   const app = require("../index");
+
+  test("It should respond to the Sign Up POST method", async () => {
+    const response = await request(app)
+        .post("/auth/student/signup")
+        .send({
+            name: "ydeezus",
+            email: 'yaboii@gmail.com',
+            password: "trickdaddy"
+          })
+    expect(response.statusCode).toBe(200);
+
+  });
+
   test("It should respond to the login POST method", async ()  => {
     const response = await request(app)
         .post("/auth/student/login")
@@ -30,15 +43,32 @@ describe("Tests student auth", () => {
 
   test("It should respond to the Sign Up POST method", async () => {
     const response = await request(app)
-        .post("/auth/student/signup")
+        .post("/auth/tutor/signup")
         .send({
             name: "ydeezus",
-            email: 'yaboii@gmail.com',
+            email: 'daboii@gmail.com',
             password: "trickdaddy"
           })
     expect(response.statusCode).toBe(200);
 
   });
+
+  test("It should respond to the login POST method", async ()  => {
+    const response = await request(app)
+        .post("/auth/tutor/login")
+        .send({
+            email: 'daboii@gmail.com',
+            password: "trickdaddy"
+          })
+    expect(response.statusCode).toBe(200);
+  
+  });
+
+});
+
+
+describe("Tests Crud operations for user profiles", () => {
+  const app = require("../index");
 
   test("It should create new profile for student", async () => {
     const response = await request(app)
@@ -72,40 +102,12 @@ describe("Tests student auth", () => {
   
     });
 
-});
-
-
-describe("Tests teacher auth", () => {
-  const app = require("../index");
-
-  test("It should respond to the Sign Up POST method", async () => {
-    const response = await request(app)
-        .post("/auth/tutor/signup")
-        .send({
-            name: "ydeezus",
-            email: 'daboii@gmail.com',
-            password: "trickdaddy"
-          })
-    expect(response.statusCode).toBe(200);
-
-  });
-
-  test("It should respond to the login POST method", async ()  => {
-    const response = await request(app)
-        .post("/auth/tutor/login")
-        .send({
-            email: 'daboii@gmail.com',
-            password: "trickdaddy"
-          })
-    expect(response.statusCode).toBe(200);
-  
-  });
-
   test("It should create new profile for teacher", async () => {
     const response = await request(app)
         .post("/auth/tutor/1/profile/create")
         .send({
             bio: "we the best brody fr",
+            rating: 4.5
           })
     expect(response.statusCode).toBe(200);
 
