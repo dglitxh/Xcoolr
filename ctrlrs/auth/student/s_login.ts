@@ -15,7 +15,6 @@ const s_login  = async (req: any, res: any) => {
            if (!user) {
                res.send({"message": "Incorrect email or password"})   
            }
-           console.log("user?")
            if (user)
            bcrypt.compare(creds.password, user.password, (err: any, response: any) => {
                if (!response) {

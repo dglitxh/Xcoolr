@@ -28,12 +28,12 @@ const signUp = async (req: any, res: any): Promise<void>  => {
         sess.user = newTeacher.id
         sess.token = "0958jwfkoa"
 
-        res.send("new account created")
+        res.status(200).send("new account created")
         res.redirect("/");
     }
     catch(e) {
         console.log(e)
-        res.status(403).jos({"status": "there was an error authenticating user"})
+        res.status(403).end("there was an error authenticating user")
     }
     finally{
         prisma.$disconnect()

@@ -29,7 +29,7 @@ router.use(session({
      store: new redisStore({client: redisClient}),
 }))
 
-router.post("/teache/signup", t_signUp)
+router.post("/tutor/signup", t_signUp)
 router.post("/tutor/login", t_login)
 router.post("/tutor/:id/profile/create", t_newProfile)
 router.put("/tutor/:id/profile/update", t_updProfile)
