@@ -1,6 +1,7 @@
 import { Application } from "express";
 const express = require("express");
 const authrouter = require("./ctrlrs/auth/auth_controller")
+const apiRouter = require("./ctrlrs/controller")
 const app: Application = express()
 import bodyParser from "body-parser";
 import { time, timeStamp } from "console";
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 })
 
 app.use("/auth", authrouter)
+app.use("/api/v1")
 app.get("/", (req, res) => {
     res.status(200).json({"msg": "Welcome to Xcoolr"})
     
