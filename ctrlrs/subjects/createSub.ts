@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import "../interfaces"
+import { subtle } from 'crypto'
 
 const prisma = new PrismaClient()
 
@@ -14,17 +14,18 @@ const createSub = async (req: any, res: any): Promise<void>  => {
     try {
     // only teachers can create new subjects
         const body: sub = req.body
-        const tid: number = req.params.id
+        const tid: number = Number(req.params.id)
+        body.t_profileId = tid
         const newSub = await prisma.subject.create({
             data: {
                 title: body.title,
                 core: body.core,
                 description: body.description,
-                t_profileId: tid,
+                t_profileId: body.t_profileId,
             }
         })
 
-        res.send("new subject created")
+        res.status(200).send("new subject created")
     
     }
     catch(e) {
