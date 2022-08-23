@@ -1,0 +1,129 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+ generator client {
+   provider        = "prisma-client-js"
+ }
+
+model Teacher {
+  id        Int             @id @default(autoincrement())
+  email     String          @unique
+  name      String
+  role      Role            @default(Teacher)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  password  String
+  profile   TeacherProfile?
+}
+
+model TeacherProfile {
+  id        Int       @id @default(autoincrement())
+  bio       String?
+  teacher   Teacher   @relation(fields: [teacherId], references: [id])
+  teacherId Int       @unique
+  subjects  Subject[]
+  rating    Float
+  Ratings   Ratings[]
+}
+
+model Ratings {
+  id        Int            @id @default(autoincrement())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  profile   TeacherProfile @relation(fields: [profileId], references: [id])
+  profileId Int
+  rating    Int
+}
+
+model Student {
+  id        Int             @id @default(autoincrement())
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  email     String          @unique
+  name      String
+  role      Role            @default(Student)
+  password  String
+  profile   StudentProfile?
+}
+
+model StudentProfile {
+  id         Int          @id @default(autoincrement())
+  bio        String?
+  student    Student      @relation(fields: [studentId], references: [id])
+  studentId  Int          @unique
+  testScores TestScores[]
+  exScores   ExScores[]
+  subjects   StudentSubjects[]
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  role      Role     @default(Admin)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  password  String
+}
+
+model Subject {
+  id          Int            @id @default(autoincrement())
+  title       String
+  description String?
+  core        Boolean        @default(true)
+  t_profile   TeacherProfile @relation(fields: [t_profileId], references: [id])
+  t_profileId Int
+  s_profiles  StudentSubjects[]
+  Exercise    Exercise[]
+  Test        Test[]
+}
+
+model StudentSubjects {
+  s_profile   StudentProfile @relation(fields: [s_profileId], references: [id])
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  subjectId   Int 
+  s_profileId Int
+  @@id([subjectId, s_profileId])
+  assignedAt DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+}
+
+model Exercise {
+  id        Int        @id @default(autoincrement())
+  subject   Subject    @relation(fields: [subjectId], references: [id])
+  subjectId Int
+  ExScores  ExScores[]
+}
+
+model Test {
+  id         Int          @id @default(autoincrement())
+  subject    Subject      @relation(fields: [subjectId], references: [id])
+  subjectId  Int
+  TestScores TestScores[]
+}
+
+model TestScores {
+  id          Int            @id @default(autoincrement())
+  test        Test           @relation(fields: [testId], references: [id])
+  testId      Int
+  s_profile   StudentProfile @relation(fields: [s_profileId], references: [id])
+  s_profileId Int
+  score       Float
+}
+
+model ExScores {
+  id          Int            @id @default(autoincrement())
+  exercise    Exercise       @relation(fields: [exId], references: [id])
+  exId        Int
+  s_profile   StudentProfile @relation(fields: [s_profileId], references: [id])
+  s_profileId Int
+  score       Float
+}
+
+enum Role {
+  Teacher
+  Student
+  Admin
+}
