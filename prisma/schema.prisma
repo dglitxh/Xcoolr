@@ -25,17 +25,15 @@ model TeacherProfile {
   teacherId Int       @unique
   subjects  Subject[]
   rating    Float
-  Ratings   Ratings[]
+  Ratings   Ratings[]  @relation()
 }
 
 model Ratings {
   id        Int            @id @default(autoincrement())
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
-  teacher   TeacherProfile @relation(fields: [t_profileId], references: [id])
-  t_profileId Int
-  student   StudentProfile @relation(fields: [s_profileId], references: [id])
-  s_profileId Int
+  teacher   TeacherProfile[] @relation()
+  student   StudentProfile[] @relation()
   rating    Int
 }
 
@@ -55,7 +53,7 @@ model StudentProfile {
   bio        String?
   student    Student      @relation(fields: [studentId], references: [id])
   studentId  Int          @unique
-  t_ratings    Ratings[]
+  ratings   Ratings[]      @relation()
   testScores TestScores[]
   exScores   ExScores[]
   subjects   StudentSubjects[]
