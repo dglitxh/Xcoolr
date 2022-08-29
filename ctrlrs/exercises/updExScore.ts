@@ -8,29 +8,32 @@ interface ex_score  {
     score: number
 }
 
-const addExScore = async (req: any, res: any): Promise<void>  => {
+const updExScore = async (req: any, res: any): Promise<void>  => {
     try {
     // only teachers can create new ex_scores
         const body: ex_score = req.body
         const id: number = Number(req.params.id)
-        const newScore = await prisma.exScores.create({
+        const updScore = await prisma.exScores.update({
+            where: {
+                id: id,
+            },
             data: {
-              exId: id,
+              exId: body.exId,
               s_profileId: body.s_profileId,
               score: body.score
             }
         })
 
-        res.status(200).send("new exercise score created")
+        res.status(200).send("new exercise score updated")
     
     }
     catch(e) {
         console.log(e)
-        res.send({"status": "there was an error creating exercise score"})
+        res.send({"status": "there was an error updating exercise score"})
     }
     finally{
         prisma.$disconnect()
     }
     }
 
-    module.exports = addExScore
+    module.exports = updExScore
