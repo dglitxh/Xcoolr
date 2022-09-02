@@ -8,7 +8,7 @@ interface rating  {
 
 const createRating = async (req: any, res: any): Promise<void>  => {
     try {
-    // only students can create new ratingss
+    // only students can create new ratings
         const body: rating = req.body
         const newRating = await prisma.ratings.create({
            data: {

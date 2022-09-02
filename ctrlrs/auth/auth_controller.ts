@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser")
 require("dotenv").config()
 const session = require("express-session")
 const router = Router()
+
 const t_login = require("./tutor/t_login")
 const t_signUp = require("./tutor/signUp")
 const t_newProfile = require("./tutor/createProfile")
