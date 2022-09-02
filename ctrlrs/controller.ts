@@ -40,5 +40,30 @@ router.get("/subjects/:id", getSub)
 router.get("/subjects", getAllSubs)
 
 // rating routes 
-router.post("/tutors/:id/rating", addRating)
+router.post("/tutors/:id/add_rating", addRating)
+router.get("/tutors/:id/del_rating", delRating)
+router.get("tutors/:id/get_rating", getRating)
+router.get("tutors/:id/get_all_ratings", getAllRating)
+
+// ex routes 
+router.post("/subjects/:id/new_ex", newEx)
+router.get("/exercises/:id/delete", delEx)
+router.get("/exercises/:id", getEx)
+router.get("/subject/:id/exercises", getSubExs)
+router.post("exercises/:id/add_score", addExScore)
+router.put("/exercises/scores/:id/upd_ex_score", updExScore)
+router.get("/exercises/scores/:id/delete", delExScore)
+router.get("exercises/:id/scores/all", getExScoresByExId)
+
+// test routes
+router.post("/subjects/:id/new_test", createTest)
+router.get("/tests/:id/delete", delTest)
+router.get("/tests/:id", getTest)
+router.get("/subject/:id/tests", getSubTests)
+router.post("tests/:id/add_score", addTestScore)
+router.put("/tests/scores/:id/upd_test_score", updTestScore)
+router.get("/tests/scores/:id/delete", delTestScore)
+router.get("/tests/:id/scores/all", getTestScores)
+
+
 module.exports = router
