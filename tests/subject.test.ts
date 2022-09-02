@@ -1,4 +1,5 @@
 const req = require("supertest")
+
 describe("Tests Crud operations for user profiles", () => {
     const app = require("../index");
   
@@ -37,7 +38,7 @@ describe("Tests Crud operations for user profiles", () => {
       expect(response.statusCode).toBe(200);
     });
   
-      test("It should subject by id", async () => {
+      test("It should get subject by id", async () => {
         const response = await req(app)
             .get("/api/v1/subjects/tutor/1/delete")
         expect(response.statusCode).toBe(200);
