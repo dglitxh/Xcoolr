@@ -48,3 +48,44 @@ describe("Tests Crud operations for user profiles", () => {
    
   
   });
+
+
+
+  describe("Tests operations for teacher ratings", () => {
+    const app = require("../index");
+  
+    test("It should create new subject for tutor", async () => {
+      const response = await req(app)
+          .post("/api/v1/tutors/1/add_rating")
+          .send({
+              rating: 5,
+            })
+      expect(response.statusCode).toBe(200);
+  
+    });
+  
+    test("It should get rating by id", async () => {
+      const response = await req(app)
+          .get("/api/v1/tutors/1/rating")
+      expect(response.statusCode).toBe(200);
+    });
+
+    test("It should get all ratings", async () => {
+        const response = await req(app)
+            .get("/api/v1/tutors/1/ratings")
+        expect(response.statusCode).toBe(200);
+      });
+  
+      test("It should get subject by id", async () => {
+        const response = await req(app)
+            .get("/api/v1/tutors/ratings/1/delete")
+        expect(response.statusCode).toBe(200);
+    
+      });
+  
+   
+  
+  })
+
+
+  
