@@ -111,7 +111,7 @@ describe("Tests operations for student exercises", () => {
 
     test("It should get all exercises for a given subjects", async () => {
         const response = await req(app)
-            .get("/api/v1/subjects")
+            .get("/api/v1/subjects/1/exercises")
         expect(response.statusCode).toBe(200);
       });
 
@@ -189,7 +189,7 @@ describe("Tests operations for student exercises", () => {
 
     test("It should get all tests for a given subjects", async () => {
         const response = await req(app)
-            .get("/api/v1/subjects")
+            .get("/api/v1/subjects/1/tests")
         expect(response.statusCode).toBe(200);
       });
 
