@@ -88,4 +88,80 @@ describe("Tests Crud operations for user profiles", () => {
   })
 
 
+
+
+describe("Tests operations for student exercises", () => {
+    const app = require("../index");
   
+    test("It should create new exercise for subject", async () => {
+      const response = await req(app)
+          .post("/api/v1/subjects/1/exercise")
+          .send({
+              subjectId: Number(1)
+            })
+      expect(response.statusCode).toBe(200);
+  
+    });
+  
+    test("It should get exercise by id", async () => {
+      const response = await req(app)
+          .get("/api/v1/exercises/1")
+      expect(response.statusCode).toBe(200);
+    });
+
+    test("It should get all exercises for a given subjects", async () => {
+        const response = await req(app)
+            .get("/api/v1/subjects")
+        expect(response.statusCode).toBe(200);
+      });
+
+      test("It should delete exercise by id", async () => {
+        const response = await req(app)
+            .get("/api/v1/exercises/1/delete")
+        expect(response.statusCode).toBe(200);
+    
+      });
+
+      test("It should create new score for exercise", async () => {
+        const response = await req(app)
+            .post("/api/v1/exercise/1/score")
+            .send({
+                exId: Number(1),
+                s_profileId: Number(1),
+                score: Number(50)
+              })
+        expect(response.statusCode).toBe(200);
+    
+      });
+    
+      test("It should get exercise by id", async () => {
+        const response = await req(app)
+            .get("/api/v1/exercises/scores/1")
+        expect(response.statusCode).toBe(200);
+      });
+  
+      test("It should get all exercises for a given subjects", async () => {
+          const response = await req(app)
+              .get("/api/v1/exercises/:id/score")
+          expect(response.statusCode).toBe(200);
+        });
+  
+        test("It should delete score by id", async () => {
+          const response = await req(app)
+              .get("/api/v1/exercises/scores/:id/delete")
+          expect(response.statusCode).toBe(200);
+      
+        });
+  
+      test("It should update subject data", async () => {
+        const response = await req(app)
+            .put("/api/v1/exercises/scores/:id/update")
+            .send({
+                score: Number(6)
+              })
+        expect(response.statusCode).toBe(200);
+      });
+    
+   
+  
+  });
