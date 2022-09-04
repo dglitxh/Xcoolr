@@ -1,8 +1,5 @@
 const request = require("supertest");
 
-
-
-
 describe("Tests user auth", () => {
   const app = require("../index");
 
@@ -214,8 +211,6 @@ describe("Tests operations for subjects ", () => {
   })
 
 
-
-
 describe("Tests operations for student exercises", () => {
     const app = require("../index");
   
@@ -268,33 +263,32 @@ describe("Tests operations for student exercises", () => {
   
       test("It should get all exercises for a given subjects", async () => {
           const response = await request(app)
-              .get("/api/v1/exercises/:id/score")
+              .get("/api/v1/exercises/1/score")
           expect(response.statusCode).toBe(200);
         });
   
         test("It should delete score by id", async () => {
           const response = await request(app)
-              .get("/api/v1/exercises/scores/:id/delete")
+              .get("/api/v1/exercises/scores/1/delete")
           expect(response.statusCode).toBe(200);
       
         });
   
       test("It should update subject data", async () => {
         const response = await request(app)
-            .put("/api/v1/exercises/scores/:id/update")
+            .put("/api/v1/exercises/scores/1/update")
             .send({
+                exId: Number(1),
+                s_profileId: Number(1),
                 score: Number(6)
               })
         expect(response.statusCode).toBe(200);
       });
     
-   
-  
   });
 
 
-
-  describe("Tests operations for student tests", () => {
+describe("Tests operations for student tests", () => {
     const app = require("../index");
   
     test("It should create new test for subject", async () => {
@@ -352,20 +346,18 @@ describe("Tests operations for student exercises", () => {
   
         test("It should delete score by id", async () => {
           const response = await request(app)
-              .get("/api/v1/tests/scores/:id/delete")
+              .get("/api/v1/tests/scores/1/delete")
           expect(response.statusCode).toBe(200);
       
         });
   
       test("It should update subject data", async () => {
         const response = await request(app)
-            .put("/api/v1/tests/scores/:id/update")
+            .put("/api/v1/tests/scores/1/update")
             .send({
                 score: Number(6)
               })
         expect(response.statusCode).toBe(200);
       });
-    
-   
-  
-  });
+      
+});
