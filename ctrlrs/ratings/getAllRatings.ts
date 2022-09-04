@@ -10,7 +10,7 @@ const getAllRatings  = async (req: Request, res: Response): Promise<void> => {
                 res.send({"result": ratings})
              }
           catch(e) {
-            res.status(400).send("ratings were not found due to an error")
+            res.status(401).send("ratings were not found due to an error")
           }
           finally{
             prisma.$disconnect()

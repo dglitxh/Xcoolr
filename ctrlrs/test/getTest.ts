@@ -18,7 +18,7 @@ const getTest  = async (req: Request, res: Response): Promise<void>  => {
                 res.send({"result": test})
              }
           catch(e) {
-            res.status(400).send("test not found due to an error")
+            res.status(401).send("test not found due to an error")
           }
           finally{
             prisma.$disconnect()
