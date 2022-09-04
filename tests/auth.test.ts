@@ -126,7 +126,7 @@ describe("Tests Crud operations for user profiles", () => {
 });
 
 
-describe("Tests Crud operations for user profiles", () => {
+describe("Tests operations for subjects ", () => {
     const app = require("../index");
   
     test("It should create new subject for tutor", async () => {
