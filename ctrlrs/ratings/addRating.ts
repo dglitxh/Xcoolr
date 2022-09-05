@@ -10,6 +10,7 @@ const createRating = async (req: any, res: any): Promise<void>  => {
     try {
     // only students can create new ratings
         const body: rating = req.body
+        body.rating = Number(body.rating)
         const newRating = await prisma.ratings.create({
            data: {
             rating: body.rating
