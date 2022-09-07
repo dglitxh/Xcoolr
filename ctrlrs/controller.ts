@@ -42,8 +42,8 @@ router.get("/subjects", getAllSubs)
 // rating routes 
 router.post("/tutors/:id/add_rating", addRating)
 router.get("/tutors/ratings/:id/delete", delRating)
-router.get("tutors/:id/rating", getRating)
-router.get("tutors/:id/ratings", getAllRating)
+router.get("/tutors/ratings/:id", getRating)
+router.get("/tutors/:id/ratings", getAllRating)
 
 // ex routes 
 router.post("/subjects/:id/exercise", newEx)
