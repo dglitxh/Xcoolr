@@ -18,7 +18,7 @@ const getExScoresByExId  = async (req: Request, res: Response): Promise<void> =>
                 res.send({"result": ExScores})
              }
           catch(e) {
-            res.status(400).send("ExScores were not found due to an error")
+            res.status(403).send("ExScores were not found due to an error")
           }
           finally{
             prisma.$disconnect()

@@ -18,7 +18,7 @@ const s_getUser  = async (req: any, res: any) => {
                 res.send({"result": user})
              }
           catch(e) {
-            res.status(400).send("User profile not found due to an error")
+            res.status(403).send("User profile not found due to an error")
           }
           finally{
             prisma.$disconnect()

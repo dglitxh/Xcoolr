@@ -13,7 +13,7 @@ const getAllSubjects  = async (req: Request, res: Response): Promise<void> => {
                 res.send({"result": subjects})
              }
           catch(e) {
-            res.status(400).send("Subjects were not found due to an error")
+            res.status(401).send("Subjects were not found due to an error")
           }
           finally{
             prisma.$disconnect()

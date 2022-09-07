@@ -11,7 +11,6 @@ const signUp = async (req: any, res: any): Promise<void>  => {
     try {
         const salt: string = await bcrypt.genSalt(10)
         const creds: sign_up = req.body
-        console.log("data: ", creds)
         creds.password = await bcrypt.hash(creds.password, salt,)
 
         const newTeacher = await prisma.teacher.create({
@@ -22,8 +21,6 @@ const signUp = async (req: any, res: any): Promise<void>  => {
             }
         })
 
-
-        console.log("i am a user!")
         const sess = req.session
         sess.email = creds.email
         sess.user = newTeacher.id

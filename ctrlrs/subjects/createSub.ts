@@ -30,7 +30,7 @@ const createSub = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.send({"status": "there was an error creating subject"})
+        res.status(401).send({"status": "there was an error creating subject"})
     }
     finally{
         prisma.$disconnect()
