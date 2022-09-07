@@ -189,7 +189,7 @@ describe("Tests operations for subjects ", () => {
   
     test("It should get rating by id", async () => {
       const response = await request(app)
-          .get("/api/v1/tutors/1/rating")
+          .get("/api/v1/tutors/ratings/1")
       expect(response.statusCode).toBe(200);
     });
 
@@ -199,7 +199,7 @@ describe("Tests operations for subjects ", () => {
         expect(response.statusCode).toBe(200);
       });
   
-      test("It should get subject by id", async () => {
+      test("It should delete subject by id", async () => {
         const response = await request(app)
             .get("/api/v1/tutors/ratings/1/delete")
         expect(response.statusCode).toBe(200);
