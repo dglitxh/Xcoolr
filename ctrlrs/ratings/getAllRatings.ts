@@ -5,7 +5,12 @@ const prisma = new PrismaClient()
 
 const getAllRatings  = async (req: Request, res: Response): Promise<void> => {
         try{
-          const ratings = await prisma.ratings.findMany()
+          const tid = Number(req.params.id)
+          const ratings = await prisma.rating.findMany({
+            where: {
+              t_profileId: tid
+            }
+          })
 
                 res.send({"result": ratings})
              }
