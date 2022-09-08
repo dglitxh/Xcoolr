@@ -33,9 +33,9 @@ const updTestScore = require("./test/updTestScore")
 
 
 // subject routes
-router.post("/subjects/tutor/:id/create", newSub)
-router.put("/subjects/tutor/:id/update", updSub)
-router.get("/subjects/tutor/:id/delete", delSub)
+router.post("/tutors/:id/subjects/create", newSub)
+router.put("/subjects/:id/update", updSub)
+router.get("/subjects/:id/delete", delSub)
 router.get("/subjects/:id", getSub)
 router.get("/subjects", getAllSubs)
 
