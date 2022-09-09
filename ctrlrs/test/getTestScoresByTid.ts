@@ -12,7 +12,7 @@ const getTestScoresByTid  = async (req: Request, res: Response): Promise<void> =
             }
           })
            if (!testScores) {
-               res.status(404).json({"message": "Test scores not found"})   
+               res.status(404).send("Test scores not found")   
            }
 
                 res.send({"result": testScores})

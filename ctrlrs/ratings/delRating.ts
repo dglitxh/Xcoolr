@@ -13,10 +13,10 @@ const delRatings  = async (req: Request, res: Response): Promise<void> => {
               },
             })
 
-                res.status(200).json({"result": "ratings deleted succesfully"})
+                res.status(200).end("ratings deleted succesfully")
              }
           catch(e) {
-            res.status(403).end({"status": "ratings could not be deleted due to an error"})
+            res.status(403).end("ratings could not be deleted due to an error")
           }
           finally{
             prisma.$disconnect()

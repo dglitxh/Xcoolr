@@ -21,7 +21,7 @@ const createTest = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(401).end({"status": "there was an error creating test"})
+        res.status(401).end("there was an error creating test")
     }
     finally{
         prisma.$disconnect()

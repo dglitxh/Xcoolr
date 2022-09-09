@@ -29,7 +29,7 @@ const updExScore = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.send({"status": "there was an error updating exercise score"})
+        res.status(401).end("there was an error updating exercise score")
     }
     finally{
         prisma.$disconnect()

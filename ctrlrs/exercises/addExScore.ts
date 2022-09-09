@@ -26,7 +26,7 @@ const addExScore = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.send({"status": "there was an error creating exercise score"})
+        res.send("there was an error creating exercise score")
     }
     finally{
         prisma.$disconnect()
