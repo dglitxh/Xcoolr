@@ -80,12 +80,12 @@ describe("Tests Crud operations for user profiles", () => {
     expect(response.statusCode).toBe(200);
   });
 
-    test("It should delete student profile by id", async () => {
-      const response = await request(app)
-          .get("/auth/student/1/profile/delete")
-      expect(response.statusCode).toBe(200);
+    // test("It should delete student profile by id", async () => {
+    //   const response = await request(app)
+    //       .get("/auth/student/1/profile/delete")
+    //   expect(response.statusCode).toBe(200);
   
-    });
+    // });
 
   test("It should create new profile for teacher", async () => {
     const response = await request(app)
@@ -113,12 +113,12 @@ describe("Tests Crud operations for user profiles", () => {
     expect(response.statusCode).toBe(200);
   });
 
-    test("It should delete teacher profile by id", async () => {
-      const response = await request(app)
-          .get("/auth/tutor/1/profile/delete")
-      expect(response.statusCode).toBe(200);
+    // test("It should delete teacher profile by id", async () => {
+    //   const response = await request(app)
+    //       .get("/auth/tutor/1/profile/delete")
+    //   expect(response.statusCode).toBe(200);
   
-    });
+    // });
 
 });
 
@@ -161,12 +161,12 @@ describe("Tests operations for subjects ", () => {
       expect(response.statusCode).toBe(200);
     });
   
-      test("It should get delete by id", async () => {
-        const response = await request(app)
-            .get("/api/v1/subjects/1/delete")
-        expect(response.statusCode).toBe(200);
+      // test("It should get delete by id", async () => {
+      //   const response = await request(app)
+      //       .get("/api/v1/subjects/1/delete")
+      //   expect(response.statusCode).toBe(200);
     
-      });
+      // });
   
    
   
@@ -199,12 +199,12 @@ describe("Tests operations for subjects ", () => {
         expect(response.statusCode).toBe(200);
       });
   
-      test("It should delete subject by id", async () => {
-        const response = await request(app)
-            .get("/api/v1/tutors/ratings/1/delete")
-        expect(response.statusCode).toBe(200);
+      // test("It should delete subject by id", async () => {
+      //   const response = await request(app)
+      //       .get("/api/v1/tutors/ratings/1/delete")
+      //   expect(response.statusCode).toBe(200);
     
-      });
+      // });
   
    
   
@@ -247,12 +247,12 @@ describe("Tests operations for student exercises", () => {
         expect(response.statusCode).toBe(200);
       });
 
-      test("It should delete exercise by id", async () => {
-        const response = await request(app)
-            .get("/api/v1/exercises/1/delete")
-        expect(response.statusCode).toBe(200);
+      // test("It should delete exercise by id", async () => {
+      //   const response = await request(app)
+      //       .get("/api/v1/exercises/1/delete")
+      //   expect(response.statusCode).toBe(200);
     
-      });
+      // });
 
       test("It should create new score for exercise", async () => {
         const response = await request(app)
@@ -278,12 +278,12 @@ describe("Tests operations for student exercises", () => {
           expect(response.statusCode).toBe(200);
         });
   
-        test("It should delete score by id", async () => {
-          const response = await request(app)
-              .get("/api/v1/exercises/scores/1/delete")
-          expect(response.statusCode).toBe(200);
+        // test("It should delete score by id", async () => {
+        //   const response = await request(app)
+        //       .get("/api/v1/exercises/scores/1/delete")
+        //   expect(response.statusCode).toBe(200);
       
-        });
+        // });
   
       test("It should update subject data", async () => {
         const response = await request(app)
@@ -335,12 +335,12 @@ describe("Tests operations for student tests", () => {
         expect(response.statusCode).toBe(200);
       });
 
-      test("It should delete test by id", async () => {
-        const response = await request(app)
-            .get("/api/v1/tests/1/delete")
-        expect(response.statusCode).toBe(200);
+      // test("It should delete test by id", async () => {
+      //   const response = await request(app)
+      //       .get("/api/v1/tests/1/delete")
+      //   expect(response.statusCode).toBe(200);
     
-      });
+      // });
 
       test("It should create new score for test", async () => {
         const response = await request(app)
@@ -366,12 +366,12 @@ describe("Tests operations for student tests", () => {
           expect(response.statusCode).toBe(200);
         });
   
-        test("It should delete score by id", async () => {
-          const response = await request(app)
-              .get("/api/v1/tests/scores/1/delete")
-          expect(response.statusCode).toBe(200);
+        // test("It should delete score by id", async () => {
+        //   const response = await request(app)
+        //       .get("/api/v1/tests/scores/1/delete")
+        //   expect(response.statusCode).toBe(200);
       
-        });
+        // });
   
       test("It should update subject data", async () => {
         const response = await request(app)
