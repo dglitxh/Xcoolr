@@ -218,7 +218,18 @@ describe("Tests operations for student exercises", () => {
       const response = await request(app)
           .post("/api/v1/subjects/1/exercise")
           .send({
-              subjectId: Number(1)
+              subjectId: Number(1),
+              exName: "Newest ex fr"
+            })
+      expect(response.statusCode).toBe(200);
+  
+    });
+
+    test("It should create new test for subject", async () => {
+      const response = await request(app)
+          .put("/api/v1/exercises/1/update")
+          .send({
+              exName: "Newer test fr"
             })
       expect(response.statusCode).toBe(200);
   
@@ -295,12 +306,23 @@ describe("Tests operations for student tests", () => {
       const response = await request(app)
           .post("/api/v1/subjects/1/test")
           .send({
-              subjectId: Number(1)
+              subjectId: Number(1),
+              testName: "New test fr"
             })
       expect(response.statusCode).toBe(200);
   
     });
   
+    test("It should update test for subject", async () => {
+      const response = await request(app)
+          .put("/api/v1/tests/1/update")
+          .send({
+              testName: "New test fr"
+            })
+      expect(response.statusCode).toBe(200);
+  
+    });
+
     test("It should get test by id", async () => {
       const response = await request(app)
           .get("/api/v1/tests/1")
