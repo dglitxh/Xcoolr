@@ -16,7 +16,7 @@ const delExScore  = async (req: Request, res: Response): Promise<void> => {
                 res.status(200).json({"result": "Exercise score deleted succesfully"})
              }
           catch(e) {
-            res.status(403).json({"status": "Exercise score could not be deleted due to an error"})
+            res.status(403).end({"status": "Exercise score could not be deleted due to an error"})
           }
           finally{
             prisma.$disconnect()

@@ -20,7 +20,7 @@ const createEx = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.send({"status": "there was an error creating exercise"})
+        res.end({"status": "there was an error creating exercise"})
     }
     finally{
         prisma.$disconnect()

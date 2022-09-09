@@ -22,7 +22,7 @@ const updateProfile = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(403).send("Profile update failed due to an error")
+        res.status(403).end("Profile update failed due to an error")
     }
     finally{
         prisma.$disconnect()

@@ -19,7 +19,7 @@ const updateExercise = async (req: Request, res: Response): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(403).send("Exercise update failed due to an error")
+        res.status(403).end("Exercise update failed due to an error")
     }
     finally{
         prisma.$disconnect()

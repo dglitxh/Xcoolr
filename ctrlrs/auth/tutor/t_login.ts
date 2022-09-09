@@ -35,7 +35,7 @@ const t_login  = async (req: any, res: any) => {
 
           }
           catch(e) {
-            res.status(400).send("There was an authentication error")
+            res.status(403).end("There was an authentication error")
           }
           finally{
             prisma.$disconnect()

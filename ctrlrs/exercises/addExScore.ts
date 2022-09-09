@@ -21,7 +21,7 @@ const addExScore = async (req: any, res: any): Promise<void>  => {
             }
         })
 
-        res.status(200).send("new exercise score created")
+        res.status(200).end("new exercise score created")
     
     }
     catch(e) {

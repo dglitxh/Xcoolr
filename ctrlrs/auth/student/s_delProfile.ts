@@ -15,7 +15,7 @@ const s_delUser  = async (req: any, res: any) => {
                 res.send("Student profile deleted succesfully.")
              }
           catch(e) {
-            res.status(403).send("Profile could not be deleted due to an error")
+            res.status(403).end("Profile could not be deleted due to an error")
           }
           finally{
             prisma.$disconnect()

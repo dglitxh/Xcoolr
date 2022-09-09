@@ -19,7 +19,7 @@ const updateTest = async (req: Request, res: Response): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(403).send("Test update failed due to an error")
+        res.status(403).end("Test update failed due to an error")
     }
     finally{
         prisma.$disconnect()

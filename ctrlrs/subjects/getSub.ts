@@ -18,7 +18,7 @@ const getSubject  = async (req: Request, res: Response): Promise<void>  => {
                 res.send({"result": subject})
              }
           catch(e) {
-            res.status(403).send("Subject not found due to an error")
+            res.status(500).send("Subject not found due to an error")
           }
           finally{
             prisma.$disconnect()

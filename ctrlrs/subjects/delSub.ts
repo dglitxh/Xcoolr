@@ -16,7 +16,7 @@ const delSubject  = async (req: Request, res: Response): Promise<void> => {
                 res.status(200).json({"result": "subject deleted succesfully"})
              }
           catch(e) {
-            res.status(403).json({"status": "Subject could not be deleted due to an error"})
+            res.status(500).end({"status": "Subject could not be deleted due to an error"})
           }
           finally{
             prisma.$disconnect()
