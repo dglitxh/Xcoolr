@@ -97,6 +97,7 @@ model Exercise {
   id        Int        @id @default(autoincrement())
   subject   Subject    @relation(fields: [subjectId], references: [id])
   subjectId Int
+  exName    String
   ExScores  ExScores[]
 }
 
@@ -104,6 +105,7 @@ model Test {
   id         Int          @id @default(autoincrement())
   subject    Subject      @relation(fields: [subjectId], references: [id])
   subjectId  Int
+  testName   String
   TestScores TestScores[]
 }
 
