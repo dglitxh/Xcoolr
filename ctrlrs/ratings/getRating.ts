@@ -3,19 +3,19 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
-const getRatings  = async (req: Request, res: Response): Promise<void>  => {
+const getRating  = async (req: Request, res: Response): Promise<void>  => {
         try{
           const id = Number(req.params.id)
-          const ratings = await prisma.ratings.findUnique({
+          const rating = await prisma.rating.findUnique({
               where: {
                 id: id
               },
             })
-           if (!ratings) {
+           if (!rating) {
                res.status(404).send({"message": "ratings not found"})   
            }
 
-                res.send({"result": ratings})
+                res.send({"result": rating})
              }
           catch(e) {
             res.status(401).send("ratings not found due to an error")
@@ -25,4 +25,4 @@ const getRatings  = async (req: Request, res: Response): Promise<void>  => {
           }
     }
       
-  module.exports = getRatings
+  module.exports = getRating

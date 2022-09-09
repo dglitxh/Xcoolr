@@ -1,12 +1,11 @@
 import { PrismaClient } from '@prisma/client'
-import { subtle } from 'crypto'
 
 const prisma = new PrismaClient()
 
 interface sub  {
     title: string
     description: string
-    core: boolean
+    core: string
     t_profileId: number
 }
 
@@ -19,7 +18,7 @@ const createSub = async (req: any, res: any): Promise<void>  => {
         const newSub = await prisma.subject.create({
             data: {
                 title: body.title,
-                core: body.core,
+                core: body.core.toLowerCase().trim() == "true",
                 description: body.description,
                 t_profileId: body.t_profileId,
             }

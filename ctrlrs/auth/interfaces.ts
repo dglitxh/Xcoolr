@@ -13,7 +13,6 @@ module.exports; interface t_profile {
     id       :number
     bio      :string 
     teacherId:number       
-    rating   :number
 }
 
 module.exports; interface s_profile {

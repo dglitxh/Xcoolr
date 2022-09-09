@@ -14,7 +14,6 @@ const updateProfile = async (req: any, res: any): Promise<void>  => {
             },
             data: {
                 bio: creds.bio,
-                rating: creds.rating
               },
         })
         if (profile)

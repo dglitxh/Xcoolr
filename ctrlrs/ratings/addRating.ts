@@ -12,18 +12,39 @@ const createRating = async (req: any, res: any): Promise<void>  => {
     try {
     // only students can create new ratings
         const body: rating = req.body
-        body.t_profileId = Number(req.params.id)
+        const t_profileId = Number(req.params.id)
         body.rating = Number(body.rating)
-        const newRating = await prisma.ratings.create({
-           data: {
-            rating: body.rating,
-            s_profileId: Number(body.s_profileId),
-            t_profileId: body.t_profileId
-           }
-
+        body.s_profileId = Number(body.s_profileId)
+    // creates or update rating
+        const fndRating = await prisma.rating.findFirst({
+            where: {
+                t_profileId: t_profileId,
+                s_profileId: body.s_profileId
+            }
         })
-
-        res.status(200).send("new ratings created")
+        if(fndRating) {
+           const update = await prisma.rating.update({
+                where: {
+                    id: fndRating.id
+                },
+                data: {
+                    rating: body.rating
+                }
+            })
+            res.status(200).send("rating updated")
+        } else {
+          const crt = await prisma.rating.create({
+                data: {
+                    t_profileId: t_profileId,
+                    s_profileId: body.s_profileId,
+                    rating: body.rating
+                }
+            })
+            res.status(200).end("new ratings created")
+        }
+    
+           
+        
     
     }
     catch(e) {

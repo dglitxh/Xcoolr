@@ -13,7 +13,6 @@ const createProfile = async (req: any, res: any): Promise<void>  => {
             data: {
                 bio: creds.bio,
                 teacherId: creds.teacherId,
-                rating: creds.rating
             }
         })
 

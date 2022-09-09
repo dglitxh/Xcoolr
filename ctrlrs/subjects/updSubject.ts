@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 interface sub  {
     title: string
     description: string
-    core: boolean
+    core: string
     t_profileId: number
 }
 
@@ -20,7 +20,7 @@ const updateSubject = async (req: Request, res: Response): Promise<void>  => {
             data: {
                 title: body.title,
                 description: body.description,
-                core: body.core
+                core: body.core.toLowerCase().trim() == "true"
               },
         })
         if (subject)

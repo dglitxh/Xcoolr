@@ -128,7 +128,7 @@ describe("Tests operations for subjects ", () => {
   
     test("It should create new subject for tutor", async () => {
       const response = await request(app)
-          .post("/api/v1/subjects/tutor/1/create")
+          .post("/api/v1/tutors/1/subjects/create")
           .send({
               title: "Sociology",
               core: true,
@@ -152,7 +152,7 @@ describe("Tests operations for subjects ", () => {
    
     test("It should update subject data", async () => {
       const response = await request(app)
-          .put("/api/v1/subjects/tutor/1/update")
+          .put("/api/v1/subjects/1/update")
           .send({
             title: "Sociology",
             core: true,
@@ -161,9 +161,9 @@ describe("Tests operations for subjects ", () => {
       expect(response.statusCode).toBe(200);
     });
   
-      test("It should get subject by id", async () => {
+      test("It should get delete by id", async () => {
         const response = await request(app)
-            .get("/api/v1/subjects/tutor/1/delete")
+            .get("/api/v1/subjects/1/delete")
         expect(response.statusCode).toBe(200);
     
       });
@@ -177,7 +177,7 @@ describe("Tests operations for subjects ", () => {
   describe("Tests operations for teacher ratings", () => {
     const app = require("../index");
   
-    test("It should create new subject for tutor", async () => {
+    test("It should create new rating for tutor", async () => {
       const response = await request(app)
           .post("/api/v1/tutors/1/add_rating")
           .send({
@@ -189,7 +189,7 @@ describe("Tests operations for subjects ", () => {
   
     test("It should get rating by id", async () => {
       const response = await request(app)
-          .get("/api/v1/tutors/1/rating")
+          .get("/api/v1/tutors/ratings/1")
       expect(response.statusCode).toBe(200);
     });
 
@@ -199,7 +199,7 @@ describe("Tests operations for subjects ", () => {
         expect(response.statusCode).toBe(200);
       });
   
-      test("It should get subject by id", async () => {
+      test("It should delete subject by id", async () => {
         const response = await request(app)
             .get("/api/v1/tutors/ratings/1/delete")
         expect(response.statusCode).toBe(200);

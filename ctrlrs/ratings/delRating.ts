@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 const delRatings  = async (req: Request, res: Response): Promise<void> => {
         try{
           const id = Number(req.params.id)
-          const ratings = await prisma.ratings.delete({
+          const del_rating = await prisma.rating.delete({
               where: {
                 id: id
               },
