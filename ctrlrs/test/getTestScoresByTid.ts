@@ -12,13 +12,13 @@ const getTestScoresByTid  = async (req: Request, res: Response): Promise<void> =
             }
           })
            if (!testScores) {
-               res.status(404).json({"message": "Test scores not found"})   
+               res.status(404).send("Test scores not found")   
            }
 
                 res.send({"result": testScores})
              }
           catch(e) {
-            res.status(401).send("Test scores were not found due to an error")
+            res.status(401).end("Test scores were not found due to an error")
           }
           finally{
             prisma.$disconnect()

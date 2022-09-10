@@ -14,13 +14,13 @@ const getSubTests  = async (req: Request, res: Response): Promise<void> => {
             }
           })
            if (!test) {
-               res.status(404).json({"message": "test not found"})   
+               res.status(404).send("test not found")   
            }
 
                 res.send({"result": test})
              }
           catch(e) {
-            res.status(401).send("tests were not found due to an error")
+            res.status(401).end("tests were not found due to an error")
           }
           finally{
             prisma.$disconnect()
