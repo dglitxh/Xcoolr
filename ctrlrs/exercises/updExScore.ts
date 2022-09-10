@@ -3,8 +3,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 interface ex_score  {
-    exId: number
-    s_profileId: number 
     score: number
 }
 
@@ -18,9 +16,7 @@ const updExScore = async (req: any, res: any): Promise<void>  => {
                 id: id,
             },
             data: {
-              exId: body.exId,
-              s_profileId: body.s_profileId,
-              score: body.score
+              score: Number(body.score)
             }
         })
 
