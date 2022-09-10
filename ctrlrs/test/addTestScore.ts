@@ -16,8 +16,8 @@ const addTestScore = async (req: any, res: any): Promise<void>  => {
         const newScore = await prisma.testScores.create({
             data: {
               testId: id,
-              s_profileId: body.s_profileId,
-              score: body.score
+              s_profileId: Number(body.s_profileId),
+              score: Number(body.score)
             }
         })
 
