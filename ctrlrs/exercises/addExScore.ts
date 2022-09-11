@@ -13,6 +13,16 @@ const addExScore = async (req: any, res: any): Promise<void>  => {
     // only teachers can create new ex_scores
         const body: ex_score = req.body
         const id: number = Number(req.params.id)
+        const chkScore = await prisma.exScores.findFirst({
+            where: {
+                exId: id,
+                s_profileId: Number(body.s_profileId)
+            }
+        })
+
+        if (chkScore) res.end("Student has already been scored, try updating score")
+
+       else { 
         const newScore = await prisma.exScores.create({
             data: {
               exId: id,
@@ -22,7 +32,8 @@ const addExScore = async (req: any, res: any): Promise<void>  => {
         })
 
         res.status(200).end("new exercise score created")
-    
+     }
+
     }
     catch(e) {
         console.log(e)
