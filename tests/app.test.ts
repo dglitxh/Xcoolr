@@ -92,7 +92,6 @@ describe("Tests Crud operations for user profiles", () => {
         .post("/auth/tutor/1/profile/create")
         .send({
             bio: "we the best brody fr",
-            rating: 4.5
           })
     expect(response.statusCode).toBe(200);
 
@@ -131,7 +130,7 @@ describe("Tests operations for subjects ", () => {
           .post("/api/v1/tutors/1/subjects/create")
           .send({
               title: "Sociology",
-              core: true,
+              core: "true",
               description: "this is the best course fr",
             })
       expect(response.statusCode).toBe(200);
@@ -155,7 +154,7 @@ describe("Tests operations for subjects ", () => {
           .put("/api/v1/subjects/1/update")
           .send({
             title: "Sociology",
-            core: true,
+            core: "true",
             description: "this is the second best course fr",
             })
       expect(response.statusCode).toBe(200);
@@ -181,6 +180,7 @@ describe("Tests operations for subjects ", () => {
       const response = await request(app)
           .post("/api/v1/tutors/1/add_rating")
           .send({
+              s_profileId: 1,
               rating: 5,
             })
       expect(response.statusCode).toBe(200);
@@ -256,7 +256,7 @@ describe("Tests operations for student exercises", () => {
 
       test("It should create new score for exercise", async () => {
         const response = await request(app)
-            .post("/api/v1/exercise/1/score")
+            .post("/api/v1/exercises/1/score")
             .send({
                 exId: Number(1),
                 s_profileId: Number(1),
@@ -266,15 +266,15 @@ describe("Tests operations for student exercises", () => {
     
       });
     
-      test("It should get exercise by id", async () => {
-        const response = await request(app)
-            .get("/api/v1/exercises/scores/1")
-        expect(response.statusCode).toBe(200);
-      });
+      // test("It should get exercise by id", async () => {
+      //   const response = await request(app)
+      //       .get("/api/v1/exercises/scores/1")
+      //   expect(response.statusCode).toBe(200);
+      // });
   
-      test("It should get all exercises for a given subjects", async () => {
+      test("It should get all exercise scores for a given subjects", async () => {
           const response = await request(app)
-              .get("/api/v1/exercises/1/score")
+              .get("/api/v1/exercises/1/scores/all")
           expect(response.statusCode).toBe(200);
         });
   
@@ -344,7 +344,7 @@ describe("Tests operations for student tests", () => {
 
       test("It should create new score for test", async () => {
         const response = await request(app)
-            .post("/api/v1/test/1/score")
+            .post("/api/v1/tests/1/score")
             .send({
                 testId: Number(1),
                 s_profileId: Number(1),
@@ -354,15 +354,10 @@ describe("Tests operations for student tests", () => {
     
       });
     
-      test("It should get test by id", async () => {
-        const response = await request(app)
-            .get("/api/v1/tests/scores/1")
-        expect(response.statusCode).toBe(200);
-      });
   
-      test("It should get all tests for a given subjects", async () => {
+      test("It should get all tests scores for a given subjects", async () => {
           const response = await request(app)
-              .get("/api/v1/tests/:id/score")
+              .get("/api/v1/tests/1/scores/all")
           expect(response.statusCode).toBe(200);
         });
   

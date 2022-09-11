@@ -19,20 +19,20 @@ CREATE TABLE "TeacherProfile" (
     "id" SERIAL NOT NULL,
     "bio" TEXT,
     "teacherId" INTEGER NOT NULL,
-    "rating" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "TeacherProfile_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Ratings" (
+CREATE TABLE "Rating" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "profileId" INTEGER NOT NULL,
+    "t_profileId" INTEGER NOT NULL,
+    "s_profileId" INTEGER NOT NULL,
     "rating" INTEGER NOT NULL,
 
-    CONSTRAINT "Ratings_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Rating_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -95,6 +95,7 @@ CREATE TABLE "StudentSubjects" (
 CREATE TABLE "Exercise" (
     "id" SERIAL NOT NULL,
     "subjectId" INTEGER NOT NULL,
+    "exName" TEXT NOT NULL,
 
     CONSTRAINT "Exercise_pkey" PRIMARY KEY ("id")
 );
@@ -103,6 +104,7 @@ CREATE TABLE "Exercise" (
 CREATE TABLE "Test" (
     "id" SERIAL NOT NULL,
     "subjectId" INTEGER NOT NULL,
+    "testName" TEXT NOT NULL,
 
     CONSTRAINT "Test_pkey" PRIMARY KEY ("id")
 );
@@ -146,7 +148,10 @@ CREATE UNIQUE INDEX "Admin_email_key" ON "Admin"("email");
 ALTER TABLE "TeacherProfile" ADD CONSTRAINT "TeacherProfile_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "Teacher"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Ratings" ADD CONSTRAINT "Ratings_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "TeacherProfile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Rating" ADD CONSTRAINT "Rating_t_profileId_fkey" FOREIGN KEY ("t_profileId") REFERENCES "TeacherProfile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Rating" ADD CONSTRAINT "Rating_s_profileId_fkey" FOREIGN KEY ("s_profileId") REFERENCES "StudentProfile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "StudentProfile" ADD CONSTRAINT "StudentProfile_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "Student"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
