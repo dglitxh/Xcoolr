@@ -56,7 +56,7 @@ router.get("/subjects/:id/exercises", getSubExs)
 router.post("/exercises/:id/score", addExScore)
 router.put("/exercises/scores/:id/update", updExScore)
 router.get("/exercises/scores/:id/delete", delExScore)
-router.get("exercises/:id/scores/all", getExScoresByExId)
+router.get("/exercises/:id/scores/all", getExScoresByExId)
 
 // test routes
 router.post("/subjects/:id/test", createTest)
