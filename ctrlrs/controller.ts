@@ -36,39 +36,42 @@ const updTestScore = require("./test/updTestScore")
 
 const router = Router()
 router.use(middleware.authMiddleware)
+const teachersOnly = middleware.teachersOnly
+const studentsOnly = middleware.studentsOnly
+
 // subject routes
-router.post("/tutors/:id/subjects/create", middleware.teachersOnly, newSub)
-router.put("/subjects/:id/update", middleware.teachersOnly, updSub)
-router.get("/subjects/:id/delete", middleware.teachersOnly, delSub)
+router.post("/tutors/:id/subjects/create", teachersOnly, newSub)
+router.put("/subjects/:id/update", teachersOnly, updSub)
+router.get("/subjects/:id/delete", teachersOnly, delSub)
 router.get("/subjects/:id", getSub)
 router.get("/subjects", getAllSubs)
 
 // rating routes 
-router.post("/tutors/:id/add_rating", middleware.studentsOnly, addRating)
-router.get("/tutors/ratings/:id/delete", middleware.studentsOnly, delRating)
-router.get("/tutors/ratings/:id", middleware.studentsOnly, getRating)
-router.get("/tutors/:id/ratings", middleware.studentsOnly, getAllRating)
+router.post("/tutors/:id/add_rating", studentsOnly, addRating)
+router.get("/tutors/ratings/:id/delete", studentsOnly, delRating)
+router.get("/tutors/ratings/:id", studentsOnly, getRating)
+router.get("/tutors/:id/ratings", studentsOnly, getAllRating)
 
 // ex routes 
-router.post("/subjects/:id/exercise", newEx)
-router.get("/exercises/:id/delete", delEx)
+router.post("/subjects/:id/exercise", teachersOnly, newEx)
+router.get("/exercises/:id/delete", teachersOnly, delEx)
 router.get("/exercises/:id", getEx)
-router.put("/exercises/:id/update", updEx)
+router.put("/exercises/:id/update", teachersOnly, updEx)
 router.get("/subjects/:id/exercises", getSubExs)
-router.post("/exercises/:id/score", addExScore)
-router.put("/exercises/scores/:id/update", updExScore)
-router.get("/exercises/scores/:id/delete", delExScore)
+router.post("/exercises/:id/score", teachersOnly, addExScore)
+router.put("/exercises/scores/:id/update", teachersOnly, updExScore)
+router.get("/exercises/scores/:id/delete", teachersOnly, delExScore)
 router.get("/exercises/:id/scores/all", getExScoresByExId)
 
 // test routes
-router.post("/subjects/:id/test", createTest)
-router.get("/tests/:id/delete", delTest)
+router.post("/subjects/:id/test", teachersOnly, createTest)
+router.get("/tests/:id/delete", teachersOnly, delTest)
 router.get("/tests/:id", getTest)
-router.put("/tests/:id/update", updTest)
+router.put("/tests/:id/update", teachersOnly, updTest)
 router.get("/subjects/:id/tests", getSubTests)
-router.post("/tests/:id/score", addTestScore)
-router.put("/tests/scores/:id/update", updTestScore)
-router.get("/tests/scores/:id/delete", delTestScore)
+router.post("/tests/:id/score", teachersOnly, addTestScore)
+router.put("/tests/scores/:id/update", teachersOnly, updTestScore)
+router.get("/tests/scores/:id/delete", teachersOnly, delTestScore)
 router.get("/tests/:id/scores/all", getTestScores)
 
 
