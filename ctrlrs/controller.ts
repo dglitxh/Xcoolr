@@ -1,6 +1,7 @@
 import { Router } from "express";
 
-const router = Router()
+
+const middleware = require("../middleware/middleware")
 
 const newSub = require("./subjects/createSub")
 const updSub = require("./subjects/updSubject")
@@ -33,19 +34,20 @@ const addTestScore = require("./test/addTestScore")
 const delTestScore = require("./test/delTestScore")
 const updTestScore = require("./test/updTestScore")
 
-
+const router = Router()
+router.use(middleware.authMiddleware)
 // subject routes
-router.post("/tutors/:id/subjects/create", newSub)
-router.put("/subjects/:id/update", updSub)
-router.get("/subjects/:id/delete", delSub)
+router.post("/tutors/:id/subjects/create", middleware.teachersOnly, newSub)
+router.put("/subjects/:id/update", middleware.teachersOnly, updSub)
+router.get("/subjects/:id/delete", middleware.teachersOnly, delSub)
 router.get("/subjects/:id", getSub)
 router.get("/subjects", getAllSubs)
 
 // rating routes 
-router.post("/tutors/:id/add_rating", addRating)
-router.get("/tutors/ratings/:id/delete", delRating)
-router.get("/tutors/ratings/:id", getRating)
-router.get("/tutors/:id/ratings", getAllRating)
+router.post("/tutors/:id/add_rating", middleware.studentsOnly, addRating)
+router.get("/tutors/ratings/:id/delete", middleware.studentsOnly, delRating)
+router.get("/tutors/ratings/:id", middleware.studentsOnly, getRating)
+router.get("/tutors/:id/ratings", middleware.studentsOnly, getAllRating)
 
 // ex routes 
 router.post("/subjects/:id/exercise", newEx)
