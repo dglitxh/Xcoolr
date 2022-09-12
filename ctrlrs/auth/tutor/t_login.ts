@@ -1,7 +1,6 @@
 import "../interfaces"
 import { PrismaClient } from "@prisma/client"
-import { uuid } from "uuidv4"
-import { session } from "passport"
+import { v4 } from "uuid"
 
 const prisma = new PrismaClient()
 const bcrypt = require("bcryptjs")
@@ -27,8 +26,9 @@ const t_login  = async (req: any, res: any) => {
 
                 const sess = req.session;
                 sess.user = user.id
+                sess.role = user.role
                 sess.email = creds.email
-                sess.token = uuid()
+                sess.token = v4()
 
                 res.send({"status": "user authenticated succesfully"})
              });
