@@ -13,10 +13,10 @@ const delEx  = async (req: Request, res: Response): Promise<void> => {
               },
             })
 
-                res.status(200).json({"result": "Exercise deleted succesfully"})
+                res.status(200).end("Exercise deleted succesfully")
              }
           catch(e) {
-            res.status(403).json({"status": "Exercise could not be deleted due to an error"})
+            res.status(403).end("Exercise could not be deleted due to an error")
           }
           finally{
             prisma.$disconnect()

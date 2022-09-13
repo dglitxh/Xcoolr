@@ -12,7 +12,7 @@ const getRating  = async (req: Request, res: Response): Promise<void>  => {
               },
             })
            if (!rating) {
-               res.status(404).send({"message": "ratings not found"})   
+               res.status(404).end({"message": "ratings not found"})   
            }
 
                 res.send({"result": rating})

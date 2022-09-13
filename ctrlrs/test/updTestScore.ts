@@ -3,8 +3,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 interface ex_score  {
-    testId: number
-    s_profileId: number 
     score: number
 }
 
@@ -18,9 +16,7 @@ const updTestScore = async (req: any, res: any): Promise<void>  => {
                 id: id,
             },
             data: {
-              testId: body.testId,
-              s_profileId: body.s_profileId,
-              score: body.score
+              score: Number(body.score)
             }
         })
 
@@ -29,7 +25,7 @@ const updTestScore = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(401).send({"status": "there was an error updating test score"})
+        res.status(401).end("there was an error updating test score")
     }
     finally{
         prisma.$disconnect()

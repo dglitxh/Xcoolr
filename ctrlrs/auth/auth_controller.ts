@@ -1,10 +1,7 @@
 import { Router } from "express";
-const redisClient = require("../../config/config")
-const cookieParser = require("cookie-parser")
-
+const middleware = require("../../middleware/middleware")
 
 require("dotenv").config()
-const session = require("express-session")
 const router = Router()
 
 const t_login = require("./tutor/t_login")
@@ -19,27 +16,10 @@ const s_delProfile = require("./student/s_delProfile")
 const s_getProfile = require("./student/s_getProfile")
 const s_login = require("./student/s_login")
 const s_signup = require("./student/s_signup")
-const redisStore = require('connect-redis')(session);
 
-router.use(cookieParser())
-router.use(session({
-     name: "xcoolr",
-     secret: process.env.SESSION_SECRET, //remember to change this
-     resave: false, 
-     saveUninitialized: false,
-     store: new redisStore({client: redisClient}),
-}))
 
 router.post("/tutor/signup", t_signUp)
 router.post("/tutor/login", t_login)
-router.post("/tutor/:id/profile/create", t_newProfile)
-router.put("/tutor/:id/profile/update", t_updProfile)
-router.get("/tutor/:id/profile/delete", t_delProfile)
-router.get("/tutor/:id/profile", t_getProfile)
-router.get("/student/:id/profile", s_getProfile)
-router.post("/student/:id/profile/create", s_newProfile)
-router.put("/student/:id/profile/update", s_updProfile)
-router.get("/student/:id/profile/delete", s_delProfile)
 router.post("/student/login", s_login)
 router.post("/student/signup", s_signup)
 router.get("/logout", (req: any, res: any) => {
@@ -49,11 +29,20 @@ router.get("/logout", (req: any, res: any) => {
         }
         res.redirect("/")
     });
-    res.send({"status": "user logged out succesfully"})
+    res.status(200).send("user logged out succesfully")
 })
 router.get("/yd", (req, res) => {
     res.json({"yhh": "get me lit"})
 })
 
+const r = router.use(middleware.authMiddleware)
+r.get("/tutor/:id/profile", t_getProfile)
+r.get("/student/:id/profile", s_getProfile)
+r.post("/tutor/:id/profile/create", t_newProfile)
+r.put("/tutor/:id/profile/update", t_updProfile)
+r.get("/tutor/:id/profile/delete", t_delProfile)
+r.post("/student/:id/profile/create", s_newProfile)
+r.put("/student/:id/profile/update", s_updProfile)
+r.get("/student/:id/profile/delete", s_delProfile)
 
 module.exports = router

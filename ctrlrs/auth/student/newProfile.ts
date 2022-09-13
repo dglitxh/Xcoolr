@@ -21,7 +21,7 @@ const createProfile = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(403).send("User profile could not be created")
+        res.status(403).end("User profile could not be created")
     }
     finally{
         prisma.$disconnect()

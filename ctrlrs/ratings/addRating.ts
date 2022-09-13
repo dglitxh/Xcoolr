@@ -49,7 +49,7 @@ const createRating = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.send({"status": "there was an error creating ratings"})
+        res.status(403).end("there was an error creating ratings")
     }
     finally{
         prisma.$disconnect()

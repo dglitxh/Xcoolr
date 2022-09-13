@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { uuid } from "uuidv4"
+import { v4 } from "uuid"
 import "../interfaces"
 
 const bcrypt = require("bcryptjs")
@@ -21,8 +21,9 @@ const signUp = async (req: any, res: any): Promise<void>  => {
         })
         const sess = req.session
         sess.user = newTeacher.id
+        sess.role = newTeacher.role
         sess.email = creds.email
-        sess.token = uuid()
+        sess.token = v4()
 
         res.send("new student account created")
         res.redirect("/");

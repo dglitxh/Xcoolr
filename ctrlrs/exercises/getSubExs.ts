@@ -20,7 +20,7 @@ const getSubExercises  = async (req: Request, res: Response): Promise<void> => {
                 res.send({"result": exercises})
              }
           catch(e) {
-            res.status(403).send("Exercises were not found due to an error")
+            res.status(403).end("Exercises were not found due to an error")
           }
           finally{
             prisma.$disconnect()
