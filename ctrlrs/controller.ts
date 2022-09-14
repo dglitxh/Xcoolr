@@ -8,6 +8,8 @@ const updSub = require("./subjects/updSubject")
 const delSub = require("./subjects/delSub")
 const getSub = require("./subjects/getSub")
 const getAllSubs = require("./subjects/getSubjects")
+const regSub = require("./subjects/regSubject")
+const dropSub = require("./subjects/dropSubject")
 
 const addRating = require("./ratings/addRating")
 const getRating = require("./ratings/getRating")
@@ -43,6 +45,8 @@ const studentsOnly = middleware.studentsOnly
 router.post("/tutors/:id/subjects/create", teachersOnly, newSub)
 router.put("/subjects/:id/update", teachersOnly, updSub)
 router.get("/subjects/:id/delete", teachersOnly, delSub)
+router.post("subjects/:id/register",  regSub)
+router.post("/subjects/:id/drop", dropSub)
 router.get("/subjects/:id", getSub)
 router.get("/subjects", getAllSubs)
 
