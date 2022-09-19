@@ -18,11 +18,11 @@ const signJwt = (): string => {
 
      )
 
-     return jwt
+     return tkn
 }
 
 const verifyJwt = (token: string): boolean => {
-    const vrfy = jwt.verify(token, process.env.JWT_SEC, ( err: any, decoded: any)=> {
+    const vrfy = jwt.verify(token, process.env.JWT_SEC, ( err: any, decoded: any) => {
         if (err) {
             console.log(err)
             return false
