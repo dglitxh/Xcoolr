@@ -4,16 +4,20 @@ import "../interfaces"
 
 const bcrypt = require("bcryptjs")
 const prisma = new PrismaClient()
+const JWT = require("../../../helpers/jwt")
+const redis = require("../../../config/config")
 
-
-
-const changePwdT = async (req: any, res: any): Promise<void>  => {
+const changePwdS = async (req: any, res: any): Promise<void>  => {
     try {
+        if (!JWT.verifyJwt(redis.get("jwt"))) {
+            res.status(403).end("You do not have the permissions to change password")
+            return 
+        }
         const salt: string = await bcrypt.genSalt(10)
         const password = await bcrypt.hash(req.body.password, salt,)
         const id = req.params.id
 
-        const updPwd = await prisma.teacher.update({
+        const updPwd = await prisma.student.update({
             where: {
                 id: id
             },
@@ -32,6 +36,6 @@ const changePwdT = async (req: any, res: any): Promise<void>  => {
     finally{
         prisma.$disconnect()
     }
-    }
+}
 
-    module.exports = changePwdT
+module.exports = changePwdS
