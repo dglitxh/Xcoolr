@@ -25,7 +25,9 @@ const forgot = async (req: Request, res: Response): Promise<void> => {
         EX: 600
     })
     const subject = "Xcoolr Account password change"
-    const msg = ``
+    const msg = `<p> Use the link below to change your account password </p>
+                     </br> 
+            <a href="localhost:4000/auth/forgot_pass" target=blank>click here</a>`
     mailer.sendEmail(email, subject, msg)
 
     }
@@ -33,12 +35,12 @@ const forgot = async (req: Request, res: Response): Promise<void> => {
     res.send("A link to change your password has been sent to your email")
 
 
-} catch (e) {
-    console.log(e)
-    res.status(400).send("There was an error processing password change request")
-} finally {
-    prisma.$disconnect()
-}
+    } catch (e) {
+            console.log(e)
+            res.status(400).send("There was an error processing password change request")
+    } finally {
+            prisma.$disconnect()
+    }
 
     
 }
