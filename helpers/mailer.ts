@@ -2,25 +2,27 @@ const nodemailer = require('nodemailer')
 
 const sendEmail = async (email: string, subject: string, msg: string) => {
     try {
+        let testAccount = await nodemailer.createTestAccount();
         const transporter = nodemailer.createTransport({
-            host: process.env.Host,
-            service: process.env.Service,
-            port: 679,
+            host: "smtp.gmail.com",
+            port: 465,
             secure: true,
             auth: {
-                user: process.env.User,
-                pass: process.env.Pass
+                user: testAccount.user, // generated ethereal user
+                pass: testAccount.pass, // generated ethereal password
+
             }
         })
-
+        console.log(testAccount)
         await transporter.sendMail({
-            from: process.env.User,
-            to: email,
+            from: "ydeezly",
+            to: "dzzy104@gmail.com",
             subject: subject,
-            msg: msg
+            html: msg
         })
     } catch (err) {
         console.log(err)
+        throw new Error()
 
     }
 }
