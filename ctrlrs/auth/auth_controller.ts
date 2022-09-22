@@ -37,10 +37,11 @@ router.get("/logout", (req: any, res: any) => {
 router.get("/yd", (req, res) => {
     res.json({"yhh": "get me lit"})
 })
-router.get("/student/forgot_pass", s_forgotPwd)
-router.post("/student/update_pass", s_changePwd)
-router.get("/teacher/forgot_pass", t_forgotPwd)
-router.post("/teacher/update_pass", t_changePwd)
+router.post("/student/forgot_pass", s_forgotPwd)
+router.post("/student/:id/update_pass", s_changePwd)
+router.post("/teacher/forgot_pass", t_forgotPwd)
+router.post("/teacher/:id/update_pass", t_changePwd)
+
 
 const r = router.use(middleware.authMiddleware)
 r.get("/teacher/:id/profile", t_getProfile)
