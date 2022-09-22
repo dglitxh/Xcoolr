@@ -28,7 +28,7 @@ describe("Tests user auth", () => {
 
   test("It should respond to the Sign Up POST method", async () => {
     const response = await request(app)
-        .post("/auth/tutor/signup")
+        .post("/auth/teacher/signup")
         .send({
             name: "ydeezus",
             email: 'daboii@gmail.com',
@@ -40,7 +40,7 @@ describe("Tests user auth", () => {
 
   test("It should respond to the login POST method", async ()  => {
     const response = await request(app)
-        .post("/auth/tutor/login")
+        .post("/auth/teacher/login")
         .send({
             email: 'daboii@gmail.com',
             password: "trickdaddy"
@@ -89,7 +89,7 @@ describe("Tests Crud operations for user profiles", () => {
 
   test("It should create new profile for teacher", async () => {
     const response = await request(app)
-        .post("/auth/tutor/1/profile/create")
+        .post("/auth/teacher/1/profile/create")
         .send({
             bio: "we the best brody fr",
           })
@@ -99,13 +99,13 @@ describe("Tests Crud operations for user profiles", () => {
 
   test("It should get profile with teacher id", async () => {
     const response = await request(app)
-        .get("/auth/tutor/1/profile")
+        .get("/auth/teacher/1/profile")
     expect(response.statusCode).toBe(200);
   });
  
   test("It should update teacher profile", async () => {
     const response = await request(app)
-        .put("/auth/tutor/1/profile/update")
+        .put("/auth/teacher/1/profile/update")
         .send({
             bio: "we the new best brody fr",
           })
@@ -114,7 +114,7 @@ describe("Tests Crud operations for user profiles", () => {
 
     // test("It should delete teacher profile by id", async () => {
     //   const response = await request(app)
-    //       .get("/auth/tutor/1/profile/delete")
+    //       .get("/auth/teacher/1/profile/delete")
     //   expect(response.statusCode).toBe(200);
   
     // });
@@ -125,9 +125,9 @@ describe("Tests Crud operations for user profiles", () => {
 describe("Tests operations for subjects ", () => {
     const app = require("../index");
   
-    test("It should create new subject for tutor", async () => {
+    test("It should create new subject for teacher", async () => {
       const response = await request(app)
-          .post("/api/v1/tutors/1/subjects/create")
+          .post("/api/v1/teachers/1/subjects/create")
           .send({
               title: "Sociology",
               core: "true",
@@ -176,9 +176,9 @@ describe("Tests operations for subjects ", () => {
   describe("Tests operations for teacher ratings", () => {
     const app = require("../index");
   
-    test("It should create new rating for tutor", async () => {
+    test("It should create new rating for teacher", async () => {
       const response = await request(app)
-          .post("/api/v1/tutors/1/add_rating")
+          .post("/api/v1/teachers/1/add_rating")
           .send({
               s_profileId: 1,
               rating: 5,
@@ -189,19 +189,19 @@ describe("Tests operations for subjects ", () => {
   
     test("It should get rating by id", async () => {
       const response = await request(app)
-          .get("/api/v1/tutors/ratings/1")
+          .get("/api/v1/teachers/ratings/1")
       expect(response.statusCode).toBe(200);
     });
 
     test("It should get all ratings", async () => {
         const response = await request(app)
-            .get("/api/v1/tutors/1/ratings")
+            .get("/api/v1/teachers/1/ratings")
         expect(response.statusCode).toBe(200);
       });
   
       // test("It should delete subject by id", async () => {
       //   const response = await request(app)
-      //       .get("/api/v1/tutors/ratings/1/delete")
+      //       .get("/api/v1/teachers/ratings/1/delete")
       //   expect(response.statusCode).toBe(200);
     
       // });

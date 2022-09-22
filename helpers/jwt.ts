@@ -1,24 +1,20 @@
 const jwt = require("jsonwebtoken")
 
-const signJwt = (): string => {
-    const tkn =  jwt.sign(
-        {
-            expiresIn: Math.floor(60*10)
-        },
-        {
-            koo: "nimo"
-        },
+const signJwt = async ()  => {
+    await jwt.sign(
         process.env.JWT_SEC,
-        {
-            algorithm: 'RS256'
-        },
+        "nimo",
         (err: any, token: any) => {
-            console.log(token);
+            if(err) {
+                console.log(err)
+                throw new Error(err);  
+            }
+            else {
+                console.log(token)
+                return String(token)
+            }
         }
-
      )
-
-     return tkn
 }
 
 const verifyJwt = (token: string): boolean => {
@@ -31,4 +27,9 @@ const verifyJwt = (token: string): boolean => {
         return true;
     })
     return vrfy
+}
+
+module.exports = {
+    signJwt,
+    verifyJwt
 }

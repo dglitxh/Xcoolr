@@ -1,4 +1,4 @@
-const redis = require("redis")
+const redis = require("ioredis")
 
 
 const redisClient = redis.createClient({
@@ -16,8 +16,8 @@ redisClient.on('connect', function (err: Error) {
     console.log('Connected to redis successfully');
 });
 
-(async () => {
-    redisClient.connect();
- })();
+// (async () => {
+//     redisClient.connect();
+//  })();
 
 module.exports = redisClient
