@@ -40,7 +40,8 @@ router.get("/yd", (req, res) => {
 router.post("/student/forgot_pass", s_forgotPwd)
 router.post("/student/:id/update_pass", s_changePwd)
 router.post("/teacher/forgot_pass", t_forgotPwd)
-router.post("/teacher/:1/update_pass", t_changePwd)
+router.post("/teacher/:id/update_pass", t_changePwd)
+
 
 const r = router.use(middleware.authMiddleware)
 r.get("/teacher/:id/profile", t_getProfile)
