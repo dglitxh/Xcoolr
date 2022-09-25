@@ -42,7 +42,6 @@ router.post("/student/:id/update_pass", s_changePwd)
 router.post("/teacher/forgot_pass", t_forgotPwd)
 router.post("/teacher/:id/update_pass", t_changePwd)
 
-
 const r = router.use(middleware.authMiddleware)
 r.get("/teacher/:id/profile", t_getProfile)
 r.get("/student/:id/profile", s_getProfile)
