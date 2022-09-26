@@ -2,18 +2,14 @@ const nodemailer = require('nodemailer')
 
 const sendEmail = async (email: string, subject: string, msg: string) => {
     try {
-        let testAccount = await nodemailer.createTestAccount();
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
+        const transporter = nodemailer.createTransport({    
+            host: "smtp.mailtrap.io",
+            port: 2525,
             auth: {
-                user: testAccount.user, // generated ethereal user
-                pass: testAccount.pass, // generated ethereal password
-
+                user: "6f6658b9d3b66c",
+                pass: "f035937a0018df"
             }
         })
-        console.log(testAccount)
         await transporter.sendMail({
             from: "ydeezly",
             to: "dzzy104@gmail.com",
