@@ -1,6 +1,5 @@
 
-
- module.exports; const postRequest = async (url:string, body: object) => {
+const postRequest = async (url:string, body: object) => {
     const settings = {
       method: 'POST',
       headers: {
@@ -21,7 +20,7 @@
   }
 
 
-  module.exports; const getRequest = async (url: string) => {
+const getRequest = async (url: string) => {
     const settings = {
       method: 'GET',
       headers: {
@@ -40,7 +39,7 @@
     }
   }
 
-  module.exports; const putRequest = async (url:string, body: object) => {
+ const putRequest = async (url:string, body: object) => {
     const settings = {
       method: 'PUT',
       headers: {
@@ -60,4 +59,8 @@
     }
   }
 
-export {}
+export default {
+  postRequest,
+  getRequest,
+  putRequest
+}
