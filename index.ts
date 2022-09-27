@@ -31,5 +31,4 @@ app.get("/", (req, res) => {
     res.status(200).json({"msg": "Welcome to Xcoolr"}) 
 })
 
-
 module.exports = app
