@@ -1,4 +1,5 @@
 import { Application } from "express";
+import bodyParser from "body-parser";
 const express = require("express");
 const authrouter = require("./ctrlrs/auth/auth_controller")
 const apiRouter = require("./ctrlrs/controller")
@@ -6,7 +7,6 @@ const app: Application = express()
 const session = require("express-session")
 const redisClient = require("./config/config")
 const cookieParser = require("cookie-parser")
-import bodyParser from "body-parser";
 const redisStore = require('connect-redis')(session);
 
 app.use(cookieParser())
