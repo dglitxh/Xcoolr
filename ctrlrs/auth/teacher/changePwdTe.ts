@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import { v4 } from "uuid"
 import "../interfaces"
 
 const JWT = require("../../../helpers/jwt")

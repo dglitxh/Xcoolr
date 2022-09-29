@@ -34,9 +34,6 @@ router.get("/logout", (req: any, res: any) => {
     });
     res.status(200).send("user logged out succesfully")
 })
-router.get("/yd", (req, res) => {
-    res.json({"yhh": "get me lit"})
-})
 router.post("/student/forgot_pass", s_forgotPwd)
 router.post("/student/:id/update_pass", s_changePwd)
 router.post("/teacher/forgot_pass", t_forgotPwd)
