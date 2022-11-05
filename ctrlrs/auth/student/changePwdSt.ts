@@ -10,12 +10,10 @@ const redis = require("../../../config/config");
 const changePwdS = async (req: any, res: any): Promise<void> => {
   try {
     if (!JWT.verifyJwt(redis.get("jwt"))) {
-      res
-        .status(403)
-        .end({
-          status: false,
-          msg: "You do not have the permissions to change password",
-        });
+      res.status(403).send({
+        status: false,
+        msg: "You do not have the permissions to change password",
+      });
       return;
     }
     const salt: string = await bcrypt.genSalt(10);
