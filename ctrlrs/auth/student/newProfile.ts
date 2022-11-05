@@ -1,31 +1,28 @@
-import "../interfaces"
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import "../interfaces";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
+const createProfile = async (req: any, res: any): Promise<void> => {
+  try {
+    const user_id: number = req.params.id;
+    const creds: s_profile = req.body;
+    creds.studentId = Number(user_id);
+    const profile = await prisma.studentProfile.create({
+      data: {
+        bio: creds.bio,
+        studentId: creds.studentId,
+      },
+    });
 
+    res.status(200).send({ status: true, msg: "profile created succesfully" });
+  } catch (e) {
+    console.log(e);
+    res
+      .status(403)
+      .send({ status: false, msg: "User profile could not be created" });
+  } finally {
+    prisma.$disconnect();
+  }
+};
 
-const createProfile = async (req: any, res: any): Promise<void>  => {
-    try {
-        const user_id: number = req.params.id
-        const creds: s_profile = req.body
-        creds.studentId = Number(user_id)
-        const profile = await prisma.studentProfile.create({
-            data: {
-                bio: creds.bio,
-                studentId: creds.studentId,
-                
-            }
-        })
-
-        res.send({"message": "profile created succesfully"})
-    }
-    catch(e) {
-        console.log(e)
-        res.status(403).end("User profile could not be created")
-    }
-    finally{
-        prisma.$disconnect()
-    }
-    }
-
-    module.exports = createProfile
+module.exports = createProfile;
