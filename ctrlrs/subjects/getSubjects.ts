@@ -1,23 +1,23 @@
-import { Request, Response } from "express"
-import { PrismaClient } from "@prisma/client"
+import { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-const getAllSubjects  = async (req: Request, res: Response): Promise<void> => {
-        try{
-          const subjects = await prisma.subject.findMany()
-           if (!subjects) {
-               res.status(404).json({"message": "Subjects not found"})   
-           }
-
-                res.send({"result": subjects})
-             }
-          catch(e) {
-            res.status(401).end("Subjects were not found due to an error")
-          }
-          finally{
-            prisma.$disconnect()
-          }
+const getAllSubjects = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const subjects = await prisma.subject.findMany();
+    if (!subjects) {
+      res.status(404).send({ status: false, msg: "Subjects not found" });
     }
-      
-  module.exports = getAllSubjects
+
+    res.status(200).send({ status: true, result: subjects });
+  } catch (e) {
+    res
+      .status(401)
+      .send({ status: false, msg: "Subjects were not found due to an error" });
+  } finally {
+    prisma.$disconnect();
+  }
+};
+
+module.exports = getAllSubjects;
