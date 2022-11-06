@@ -31,7 +31,7 @@ const createRating = async (req: any, res: any): Promise<void>  => {
                     rating: body.rating
                 }
             })
-            res.status(200).send("rating updated")
+            res.status(200).send({status: true, msg: "rating updated"})
         } else {
           const crt = await prisma.rating.create({
                 data: {
@@ -40,7 +40,7 @@ const createRating = async (req: any, res: any): Promise<void>  => {
                     rating: body.rating
                 }
             })
-            res.status(200).end("new ratings created")
+            res.status(200).send({status: true, msg: "new ratings created"})
         }
     
            
@@ -49,7 +49,7 @@ const createRating = async (req: any, res: any): Promise<void>  => {
     }
     catch(e) {
         console.log(e)
-        res.status(403).end("there was an error creating ratings")
+        res.status(403).send({status: false, msg: "there was an error creating ratings"})
     }
     finally{
         prisma.$disconnect()
