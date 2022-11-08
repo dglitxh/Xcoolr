@@ -1,26 +1,28 @@
+import { PrismaClient } from "@prisma/client";
+import { Request, Response } from "express";
 
-import { PrismaClient } from "@prisma/client"
-import { Request, Response } from "express"
+const prisma = new PrismaClient();
 
-const prisma = new PrismaClient()
+const delSubject = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const id = Number(req.params.id);
+    const subject = await prisma.subject.delete({
+      where: {
+        id: id,
+      },
+    });
 
-const delSubject  = async (req: Request, res: Response): Promise<void> => {
-        try{
-          const id = Number(req.params.id)
-          const subject = await prisma.subject.delete({
-              where: {
-                id: id
-              },
-            })
+    res.status(200).send({ status: true, msg: "subject deleted succesfully" });
+  } catch (e) {
+    res
+      .status(500)
+      .send({
+        status: false,
+        msg: "Subject could not be deleted due to an error",
+      });
+  } finally {
+    prisma.$disconnect();
+  }
+};
 
-                res.status(200).json({"result": "subject deleted succesfully"})
-             }
-          catch(e) {
-            res.status(500).end("Subject could not be deleted due to an error")
-          }
-          finally{
-            prisma.$disconnect()
-          }
-    }
-      
-  module.exports = delSubject
+module.exports = delSubject;
