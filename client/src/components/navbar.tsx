@@ -16,21 +16,7 @@ function NavBar() {
   const [user, setUser] = useState("");
   const { isDark, type } = useTheme();
 
-  interface nlinks {
-    Home: string;
-    About: string;
-    Services: string;
-    Pricing: string;
-    Contact: string;
-  }
-
-  const navLinks: nlinks = {
-    Home: "/#",
-    About: "/#about",
-    Services: "/#services",
-    Pricing: "/#pricing",
-    Contact: "/#contact",
-  };
+  const navLinks = ["Home", "About", "Services", "Pricing", "Contact"];
 
   return (
     <Navbar maxWidth={"fluid"} isBordered={isDark} variant="floating">
@@ -43,11 +29,11 @@ function NavBar() {
         }}
       >
         <Link color="inherit">
-          <Text b>BlueHut.</Text>
+          <Text b>Xscoolr.</Text>
         </Link>
       </Navbar.Brand>
       <Navbar.Content activeColor="primary" hideIn="xs" variant={"underline"}>
-        {Object.keys(navLinks).map((item, index) => {
+        {navLinks.map((item, index) => {
           return (
             <Navbar.Link
               key={index}
@@ -55,7 +41,7 @@ function NavBar() {
                 setActive(index + 1);
               }}
               isActive={index + 1 == active}
-              // href={navLinks[item]}
+              href={"/#" + item.toLowerCase()}
             >
               {item}
             </Navbar.Link>
@@ -122,8 +108,26 @@ function NavBar() {
           <Switch
             shadow
             size="xs"
-            // iconOn={<SunIcon />}
-            // iconOff={<MoonIcon />}
+            iconOn={
+              <SunIcon
+                fill="currentColor"
+                filled={true}
+                size={24}
+                height={24}
+                width={24}
+                label="slime"
+              />
+            }
+            iconOff={
+              <MoonIcon
+                fill="currentColor"
+                filled={true}
+                size={24}
+                height={24}
+                width={24}
+                label="slime"
+              />
+            }
             checked={isDark}
             // onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
           />
@@ -143,7 +147,7 @@ function NavBar() {
                 css={{
                   minWidth: "100%",
                 }}
-                // href={navLinks[item]}
+                href={"/#" + item.toLowerCase()}
                 onClick={() => {
                   setActive(index + 1);
                 }}
