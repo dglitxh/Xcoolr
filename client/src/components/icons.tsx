@@ -68,8 +68,8 @@ export const SunIcon = ({
 };
 
 export const MoonIcon = ({
-  fill = "currentColor",
-  filled = false,
+  fill,
+  filled,
   size,
   height,
   width,
