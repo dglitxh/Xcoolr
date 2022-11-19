@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import NavBar from "./components/navbar";
+import Hero from "./components/hero";
 
 function App() {
   return (
     <div className="App">
-      <h5>Welcome to Xcoolr</h5>
+      <NavBar />
+      <Hero />
     </div>
   );
 }
