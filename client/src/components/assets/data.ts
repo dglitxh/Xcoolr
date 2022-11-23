@@ -2,12 +2,12 @@ export const cardData = [
   {
     id: 1,
     heading: "Advanced analytics",
-    text: "we use tested and advanced ai models to provide indepth analysis on student data",
+    text: "we use tested and advanced AI models to provide indepth analysis on student data",
   },
   {
     id: 2,
     heading: "Accurate predictions",
-    text: `By using our innovative ai models, we are able to predict performance
+    text: `By using our innovative AI solutions, we are able to predict performance
             and find tailor made solutions to improve student performance`,
   },
   {
