@@ -1,4 +1,4 @@
-import { Container, Text, Row } from "@nextui-org/react";
+import { Container, Text, Row, Button } from "@nextui-org/react";
 import React from "react";
 
 export default function Hero() {
@@ -17,6 +17,10 @@ export default function Hero() {
             insightful and in-depth understanding of student's performance in
             the most interactive way possible.
           </Text>
+        </Row>
+        <Row>
+          <Button>Get Started.</Button>
+          <Button>Contact Us.</Button>
         </Row>
       </div>
     </Container>
