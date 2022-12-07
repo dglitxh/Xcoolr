@@ -5,7 +5,7 @@ import { MyCard } from "./mCard";
 
 export default function CardSection() {
   return (
-    <Container lg>
+    <Container lg className="cardSect" css={{ marginBottom: "6%" }}>
       <Grid.Container justify="center">
         {cardData.map((item) => {
           return (
