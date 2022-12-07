@@ -9,7 +9,7 @@ export default function CardSection() {
       <Grid.Container justify="center">
         {cardData.map((item) => {
           return (
-            <Grid md={4} sm={4} lg={4}>
+            <Grid md={4} sm={4} lg={4} key={item.id}>
               <MyCard data={item} />
             </Grid>
           );
