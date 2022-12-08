@@ -1,4 +1,4 @@
-import { Container, Text, Row, Button } from "@nextui-org/react";
+import { Container, Text, Row, Button, Spacer } from "@nextui-org/react";
 import React from "react";
 
 export default function Hero() {
@@ -18,8 +18,10 @@ export default function Hero() {
             the most interactive way possible.
           </Text>
         </Row>
+        <Spacer y={2} />
         <Row>
           <Button>Get Started.</Button>
+          <Spacer x={1} />
           <Button>Contact Us.</Button>
         </Row>
       </div>
