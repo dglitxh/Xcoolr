@@ -4,8 +4,11 @@ import React from "react";
 export default function Dashboard() {
   return (
     <div>
-      <Col span={3} css={{ backgroundColor: "gray" }}>
-        <Container>
+      <Col
+        span={2}
+        css={{ backgroundColor: "gray", borderRight: "2px solid red" }}
+      >
+        <Container justify="center">
           <Text size={22} b h1>
             {" "}
             Xcooler Dash
@@ -13,7 +16,7 @@ export default function Dashboard() {
           <Text></Text>
         </Container>
       </Col>
-      <Col span={9}></Col>
+      <Col span={10}></Col>
     </div>
   );
 }
