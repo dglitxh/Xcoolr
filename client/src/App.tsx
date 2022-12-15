@@ -1,16 +1,12 @@
 import React from "react";
-import NavBar from "./components/NavBar";
-import Hero from "./components/Hero";
-import CardSection from "./components/CardSect";
-import About from "./components/AboutSect";
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Hero />
-      <CardSection />
-      <About />
+      {/* <Home /> */}
+      <Dashboard />
     </div>
   );
 }
