@@ -1,3 +1,4 @@
+
 import { Col, Container, Text } from "@nextui-org/react";
 import React from "react";
 
@@ -17,6 +18,6 @@ export default function Dashboard() {
         </Container>
       </Col>
       <Col span={10}></Col>
-    </div>
-  );
-}
+</div>
+
+)}
