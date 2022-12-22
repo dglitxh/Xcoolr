@@ -176,7 +176,7 @@ export const EditIcon = ({ fill, size, height, width, ...props }: svgProps) => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
+      stroke={fill || "currentColor"}
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
