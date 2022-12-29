@@ -26,8 +26,8 @@ export default function Dashboard() {
           }}
         >
           <Container justify="center" alignContent="center">
-            {menu.map((item) => (
-              <Row justify="center" align="center">
+            {menu.map((item, index) => (
+              <Row key={index} justify="center" align="center">
                 <Link>
                   <Text size={20} css={{ lineHeight: "80px" }}>
                     <EditIcon
