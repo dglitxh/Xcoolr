@@ -1,7 +1,8 @@
-import { Col, Container, Text, Row, Link } from "@nextui-org/react";
+import { Col, Container, Text, Row, Link, Grid } from "@nextui-org/react";
 import { EditIcon } from "../components/icons";
 import React from "react";
 import NavBar from "../components/NavBar";
+import GenDash from "../components/charts/general";
 
 export default function Dashboard() {
   const menu = [
@@ -15,7 +16,7 @@ export default function Dashboard() {
   return (
     <div>
       <NavBar />
-      <Container>
+      <Container fluid>
         <Col
           span={2}
           css={{
@@ -25,8 +26,8 @@ export default function Dashboard() {
           }}
         >
           <Container justify="center" alignContent="center">
-            {menu.map((item) => (
-              <Row justify="center" align="center">
+            {menu.map((item, index) => (
+              <Row key={index} justify="center" align="center">
                 <Link>
                   <Text size={20} css={{ lineHeight: "80px" }}>
                     <EditIcon
@@ -36,7 +37,7 @@ export default function Dashboard() {
                       height={20}
                       width={20}
                       label=""
-                    />{" "}
+                    />
                     {item}
                   </Text>
                 </Link>
@@ -44,7 +45,24 @@ export default function Dashboard() {
             ))}
           </Container>
         </Col>
-        <Col span={10}></Col>
+        <Col span={10}>
+          <Container>
+            <Grid.Container>
+              <Grid lg={4} md={4} sm={4}>
+                {" "}
+                <GenDash />
+              </Grid>
+              <Grid lg={4} md={4} sm={4}>
+                {" "}
+                <GenDash />
+              </Grid>
+              <Grid lg={4} md={4} sm={4}>
+                {" "}
+                <GenDash />
+              </Grid>
+            </Grid.Container>
+          </Container>
+        </Col>
       </Container>
     </div>
   );
