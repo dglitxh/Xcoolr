@@ -70,18 +70,33 @@ export default function Dashboard() {
         </Card>
       </Grid>
     </Grid.Container>
-            <Grid.Container>
+            <Grid.Container gap={2}>
               <Grid lg={4} md={4} sm={4}>
-                {" "}
+              <Card >
+              <Card.Body>
+                     {" "}
                 <GenDash />
+              </Card.Body>
+              </Card>
+             
               </Grid>
               <Grid lg={4} md={4} sm={4}>
-                {" "}
+              <Card variant="flat">
+              <Card.Body>
+                     {" "}
                 <GenDash />
+              </Card.Body>
+              </Card>
+             
               </Grid>
-              <Grid lg={4} md={4} sm={4}>
-                {" "}
+               <Grid lg={4} md={4} sm={4}>
+              <Card variant="flat">
+              <Card.Body>
+                     {" "}
                 <GenDash />
+              </Card.Body>
+              </Card>
+             
               </Grid>
             </Grid.Container>
           </Container>
