@@ -47,56 +47,56 @@ export default function Dashboard() {
         </Col>
         <Col span={10}>
           <Container>
-          <Grid.Container gap={2} css={{marginTop: "$10", marginBottom: "$10"}}>
-      <Grid xs={4}>
-        <Card variant='bordered'>
-          <Card.Body>
-            <Text>Default card</Text>
-          </Card.Body>
-        </Card>
-      </Grid>
-      <Grid xs={4}>
-        <Card variant="bordered">
-          <Card.Body>
-            <Text>Flat card.</Text>
-          </Card.Body>
-        </Card>
-      </Grid>
-      <Grid xs={4}>
-        <Card variant="bordered">
-          <Card.Body>
-            <Text>Bordered card.</Text>
-          </Card.Body>
-        </Card>
-      </Grid>
-    </Grid.Container>
+            <Grid.Container
+              gap={2}
+              css={{ marginTop: "$10", marginBottom: "$10" }}
+            >
+              <Grid xs={4}>
+                <Card variant="bordered">
+                  <Card.Body>
+                    <Text>Default card</Text>
+                  </Card.Body>
+                </Card>
+              </Grid>
+              <Grid xs={4}>
+                <Card variant="bordered">
+                  <Card.Body>
+                    <Text>Flat card.</Text>
+                  </Card.Body>
+                </Card>
+              </Grid>
+              <Grid xs={4}>
+                <Card variant="bordered">
+                  <Card.Body>
+                    <Text>Bordered card.</Text>
+                  </Card.Body>
+                </Card>
+              </Grid>
+            </Grid.Container>
             <Grid.Container gap={2}>
               <Grid lg={4} md={4} sm={4}>
-              <Card >
-              <Card.Body>
-                     {" "}
-                <GenDash />
-              </Card.Body>
-              </Card>
-             
+                <Card>
+                  <Card.Body>
+                    {" "}
+                    <GenDash />
+                  </Card.Body>
+                </Card>
               </Grid>
               <Grid lg={4} md={4} sm={4}>
-              <Card variant="flat">
-              <Card.Body>
-                     {" "}
-                <GenDash />
-              </Card.Body>
-              </Card>
-             
+                <Card variant="flat">
+                  <Card.Body>
+                    {" "}
+                    <GenDash />
+                  </Card.Body>
+                </Card>
               </Grid>
-               <Grid lg={4} md={4} sm={4}>
-              <Card variant="flat">
-              <Card.Body>
-                     {" "}
-                <GenDash />
-              </Card.Body>
-              </Card>
-             
+              <Grid lg={4} md={4} sm={4}>
+                <Card variant="flat">
+                  <Card.Body>
+                    {" "}
+                    <GenDash />
+                  </Card.Body>
+                </Card>
               </Grid>
             </Grid.Container>
           </Container>
